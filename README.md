@@ -13,5 +13,5 @@ Movies finder with films detail pages and favourites page. A react project.
 4.	API references
 
 # Build and Test
-    - yarn install
-    - yarn start 
+    - yarn build
+    - yarn test 
