@@ -9,9 +9,9 @@ const App = (props) => {
   const { isLoadingUser } = props,
     userName = sessionStorage.getItem('userName');
 
-  return !userName && isLoadingUser
-    ? <LoginPage />
-    : <Layout/>
+  return userName
+    ? <Layout/>
+    : <LoginPage/>
 
 }
 

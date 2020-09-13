@@ -12,11 +12,13 @@ export const setUserName = () => {
         const state = getState().LoginReducer,
             userName = state.user;
 
-        sessionStorage.setItem('userName', userName)
+            if(userName !== '') {
+                sessionStorage.setItem('userName', userName)
+                dispatch({
+                    type: LOGIN_ACTIONS.SET_USER_NAME,
+                    isLoadingUser: false,
+                    })
+            }
         
-        dispatch({
-        type: LOGIN_ACTIONS.SET_USER_NAME,
-        isLoadingUser: false,
-        })
     }
 }
