@@ -10,8 +10,8 @@ const LoginPage = (props) => {
     const { onUserNameChange, onUserLogin } = props
 
     return (
-        <div>
-            <div>
+        <div className="container-fluid">
+            <div className="card">
                 <label>
                     Nombre usuario
                 </label>

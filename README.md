@@ -12,7 +12,7 @@ Movies finder with films detail pages and favourites page. A react project.
     - react-redux v.7.2.1
     - redux v.4.0.5
     - redux-thunk v.2.3.0
-    - bootstrap v.4.5.2
+    - node-sass v.4.14.1
 3.	Latest releases
 4.	API references
 

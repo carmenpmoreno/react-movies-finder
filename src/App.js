@@ -1,6 +1,7 @@
 import React from 'react';
-import Layout from './components/Layout/index'
-import LoginPage from './components/LoginPage'
+import Layout from './components/Layout/index';
+import LoginPage from './components/LoginPage';
+import './styles/moviesFinder.scss';
 
 const App = () => {
 
