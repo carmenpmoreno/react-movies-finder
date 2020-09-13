@@ -23,7 +23,7 @@ const HomePage = (props) => {
                     value={inputToSearch}
                   />
                   <button 
-                    onClick={(e) => onSearchButtonClick}
+                    onClick={(e) => onSearchButtonClick(e)}
                     type="submit" 
                     className="button is-info">
                       Buscar

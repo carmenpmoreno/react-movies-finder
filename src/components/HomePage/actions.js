@@ -16,10 +16,10 @@ export const searchHandler = (e) => {
 
             if(inputToSearch !== '') {
 
-                // dispatch({
-                //     type: HOME_ACTIONS.SEARCH_START,
-                //     isLoading: true,
-                // })
+                dispatch({
+                    type: HOME_ACTIONS.SEARCH_START,
+                    isLoading: true,
+                })
 
                 fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${inputToSearch}`)
                     .then(resp => resp.json())
