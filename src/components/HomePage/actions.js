@@ -1,23 +1,37 @@
-import { HOME_ACTIONS } from './constants'
+import { HOME_ACTIONS, API_KEY } from './constants'
 
-export const getUserName = (userName) => ({
-    type: HOME_ACTIONS.GET_USER_NAME,
-    user: userName,
+export const getInputToSearch = (inputValue) => ({
+    type: HOME_ACTIONS.GET_INPUT_TO_SEARCH,
+    inputToSearch: inputValue,
 })
 
-export const setUserName = () => {
+export const searchHandler = (e) => {
+
+    e.preventDefault();
 
     return (dispatch, getState) => {      
         
-        const state = getState().LoginReducer,
-            userName = state.user;
+        const state = getState().HomeReducer,
+        inputToSearch = state.inputToSearch;
 
-            if(userName !== '') {
-                sessionStorage.setItem('userName', userName)
-                dispatch({
-                    type: HOME_ACTIONS.SET_USER_NAME,
-                    isLoadingUser: false,
-                    })
+            if(inputToSearch !== '') {
+
+                // dispatch({
+                //     type: HOME_ACTIONS.SEARCH_START,
+                //     isLoading: true,
+                // })
+
+                fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${inputToSearch}`)
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data);
+                        dispatch({
+                            type: HOME_ACTIONS.SEARCH_SUCESS,
+                            isLoading: false,
+                            movies: data
+                        })
+                    });
+
             }
         
     }
