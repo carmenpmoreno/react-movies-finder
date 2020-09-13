@@ -1,26 +1,31 @@
-import React, { Component } from 'react';
-import { Switch, Route } from 'react-router';
+import React from 'react';
+import { connect } from 'react-redux'
 
-// import Home from './pages/Home';
-// import Detail from './pages/Detail';
-// import NotFound from './pages/NotFound';
+import Layout from './components/Layout/index'
+import LoginPage from './components/LoginPage'
 
-import './App.css';
+const App = (props) => {
 
-// eslint-disable-next-line react/prefer-stateless-function
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        initial App
-        {/* <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/detail/:id" component={Detail} />
-          <Route component={NotFound} />
-        </Switch> */}
-      </div>
-    );
+  const { isLoadingUser } = props
+
+  if(isLoadingUser === true) {
+    return <LoginPage />
+  } else {
+    return <Layout/>
+  }
+
+}
+
+const mapStateToProps = (state) => {
+  return {
+    isLoadingUser: state.LoginReducer.isLoadingUser
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
