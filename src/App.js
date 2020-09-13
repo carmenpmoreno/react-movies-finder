@@ -1,31 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux'
-
 import Layout from './components/Layout/index'
 import LoginPage from './components/LoginPage'
 
-const App = (props) => {
+const App = () => {
 
-  const { isLoadingUser } = props
+  const userName = sessionStorage.getItem('userName');
 
-  if(isLoadingUser === true) {
-    return <LoginPage />
-  } else {
-    return <Layout/>
-  }
+  return !userName
+    ? <LoginPage />
+    : <Layout/>
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isLoadingUser: state.LoginReducer.isLoadingUser
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatch
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

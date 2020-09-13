@@ -5,7 +5,18 @@ export const getUserName = (userName) => ({
     user: userName,
 })
 
-export const setUserName = () => ({
-    type: LOGIN_ACTIONS.SET_USER_NAME,
-    isLoadingUser: false,
-})
+export const setUserName = () => {
+
+    return (dispatch, getState) => {      
+        
+        const state = getState().LoginReducer,
+            userName = state.user;
+
+        sessionStorage.setItem('userName', userName)
+        
+        dispatch({
+        type: LOGIN_ACTIONS.SET_USER_NAME,
+        isLoadingUser: false,
+        })
+    }
+}
