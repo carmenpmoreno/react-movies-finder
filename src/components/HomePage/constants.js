@@ -1,0 +1,4 @@
+export const HOME_ACTIONS = {
+    GET_USER_NAME: 'HOME_GET_USER_NAME',
+    SET_USER_NAME: 'HOME_SET_USER_NAME',
+}

@@ -7,20 +7,22 @@ import FavoritesPage from '../FavoritesPage'
 
 const Main = () => {
     return (
-        <Switch>
-            <Route 
-                exact path='/'
-                component={HomePage} 
-            />
-            <Route 
-                exact path='/detail'
-                component={DetailPage} 
-            />
-            <Route 
-                exact path='/favorites'
-                component={FavoritesPage} 
-            />
-        </Switch>
+        <main className="container-fluid">
+            <Switch>
+                <Route 
+                    exact path='/'
+                    component={HomePage} 
+                />
+                <Route 
+                    exact path='/detail'
+                    component={DetailPage} 
+                />
+                <Route 
+                    exact path='/favorites'
+                    component={FavoritesPage} 
+                />
+            </Switch>
+        </main>
     );
 };
 

@@ -1,16 +1,22 @@
-//import { HOME_ACTIONS } from './constants'
+import { HOME_ACTIONS } from './constants'
 
-const INITIAL_STATE = { }
+const INITIAL_STATE = { 
+    inputToSearch: ''
+}
 
 export default (state =  INITIAL_STATE, action) => {
     switch(action.type){
 
-        // case HOME_ACTIONS.SET_LOADING:
-        // case HOME_ACTIONS.SET_LOADED:
-        //     return {
-        //         ...state,
-        //         isLoading: action.isLoading                
-        //     }
+        case HOME_ACTIONS.GET_USER_NAME:
+            return {
+                ...state,
+                inputToSearch: action.inputToSearch                
+            }
+
+        case HOME_ACTIONS.SET_USER_NAME:
+            return {
+                ...state,
+            }
 
         default:
             return state

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
-import './index.css'
 
 class LoginPage extends Component {
 
@@ -26,7 +25,7 @@ class LoginPage extends Component {
                         type="text"
                         autoComplete="off"
                         maxLength="100"
-                        placeholder="Ej: Movie friki user" 
+                        placeholder="Ej: Movie friki" 
                         onChange={(e) => onUserNameChange(e.target.value)}
                     ></input>
                     <button
