@@ -2,21 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
-
-
+import './index.css'
 
 const LoginPage = (props) => {
 
     const { onUserNameChange, onUserLogin } = props
 
     return (
-        <div>
-            <div>
-                <label>
+        <div
+            title="Screenshot from video by UzbekIL from Pixabay " 
+            className="container-fluid login-container">
+            <div className="card login-card">
+                <label className="login-card-label">
                     Nombre usuario
                 </label>
                 <input
-                    className=""
+                    className="login-card-input"                    
                     type="text"
                     autoComplete="off"
                     maxLength="100"
@@ -25,6 +26,7 @@ const LoginPage = (props) => {
                 ></input>
                 <button
                     onClick={onUserLogin}
+                    className="login-card-button btn"
                 >Entrar</button>
             </div>
         </div>

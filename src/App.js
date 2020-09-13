@@ -1,15 +1,30 @@
 import React from 'react';
-import Layout from './components/Layout/index'
-import LoginPage from './components/LoginPage'
+import { connect } from 'react-redux';
+import Layout from './components/Layout/index';
+import LoginPage from './components/LoginPage';
+import './styles/moviesFinder.scss';
 
-const App = () => {
+const App = (props) => {
 
-  const userName = sessionStorage.getItem('userName');
+  const { isLoadingUser } = props,
+    userName = sessionStorage.getItem('userName');
 
-  return !userName
+  return !userName && isLoadingUser
     ? <LoginPage />
     : <Layout/>
 
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    isLoadingUser: state.LoginReducer.isLoadingUser
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
