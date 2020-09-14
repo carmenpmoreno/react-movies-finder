@@ -15,28 +15,35 @@ class LoginPage extends Component {
         return (
             <div className="container-fluid login-container">
                 <div className="login-welcome-container-mobile">
-                    <h2 className="login-welcome">Bienvenido</h2>
+                    <i className="fas fa-film"></i>
                 </div>
                 <div className="login-welcome-container-tablet">
+                    <div className="login-app-title-container"> 
+                        <i className="fas fa-film"></i>
+                        <h1 className="login-app-title">React movies finder</h1>
+                    </div>
+                </div>
+                <div>
                     <h2 className="login-welcome">Bienvenido</h2>
+                    <div className="login-card">
+                        <label className="login-card-label">
+                            Nombre usuario
+                        </label>
+                        <input
+                            className="login-card-input"                    
+                            type="text"
+                            autoComplete="off"
+                            maxLength="100"
+                            placeholder="Ej: Movie friki" 
+                            onChange={(e) => onUserNameChange(e.target.value)}
+                        ></input>
+                        <button
+                            onClick={onUserLogin}
+                            className="login-card-button btn"
+                        >Entrar</button>
+                    </div>
                 </div>
-                <div className="login-card">
-                    <label className="login-card-label">
-                        Nombre usuario
-                    </label>
-                    <input
-                        className="login-card-input"                    
-                        type="text"
-                        autoComplete="off"
-                        maxLength="100"
-                        placeholder="Ej: Movie friki" 
-                        onChange={(e) => onUserNameChange(e.target.value)}
-                    ></input>
-                    <button
-                        onClick={onUserLogin}
-                        className="login-card-button btn"
-                    >Entrar</button>
-                </div>
+                
             </div>
         );
     }
