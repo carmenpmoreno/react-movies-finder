@@ -13,10 +13,14 @@ class LoginPage extends Component {
         const { onUserNameChange, onUserLogin } = this.props
 
         return (
-            <div
-                title="Screenshot from video by UzbekIL from Pixabay " 
-                className="container-fluid login-container">
-                <div className="card login-card">
+            <div className="container-fluid login-container">
+                <div className="login-welcome-container-mobile">
+                    <h2 className="login-welcome">Bienvenido</h2>
+                </div>
+                <div className="login-welcome-container-tablet">
+                    <h2 className="login-welcome">Bienvenido</h2>
+                </div>
+                <div className="login-card">
                     <label className="login-card-label">
                         Nombre usuario
                     </label>
