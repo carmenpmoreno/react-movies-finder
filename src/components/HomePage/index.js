@@ -16,7 +16,8 @@ const HomePage = (props) => {
     inputToSearch,
     movies,
     error,
-    errorMessage } = props
+    errorMessage,
+    remoteError } = props
 
     return (
       <section className="home-page-container">
@@ -60,7 +61,7 @@ const HomePage = (props) => {
 
         <article>
           <ul className="home-page-movies-list container-fluid">
-            {movies && error === false
+            {movies && error === false && remoteError === false
             ? movies.map( movie => 
               <li className="card home-page-movie-item" key={movie.imdbID} >
                 <div className="card-header">
@@ -81,8 +82,13 @@ const HomePage = (props) => {
             )
             : '' }
 
-            {!movies && error === true && errorMessage === "Movie not found!"
+            {!movies && error === true && remoteError === false && errorMessage === "Movie not found!"
               ? <p>No hemos encontrado la película o serie solicitada</p>
+              : ''
+            }
+
+            {!movies && error === false && remoteError === true
+              ? <p>Lo sentimos, ha habido un error del servidor, inténtelo de nuevo en unos instantes</p>
               : ''
             }
           </ul>
@@ -112,7 +118,8 @@ const mapStateToProps = (state) => {
     inputToSearch: current.inputToSearch,
     movies: current.movies.Search,
     error: current.error,
-    errorMessage: current.errorMessage
+    errorMessage: current.errorMessage,
+    remoteError: current.remoteError,
   }
 }
 

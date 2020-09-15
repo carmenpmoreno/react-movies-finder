@@ -14,7 +14,7 @@ export const searchHandler = (e) => {
         const state = getState().HomeReducer,
         inputToSearch = state.inputToSearch;
 
-            if(inputToSearch !== '') {
+            if(inputToSearch.length > 3) {
 
                 dispatch({
                     type: HOME_ACTIONS.SEARCH_START,
@@ -41,6 +41,11 @@ export const searchHandler = (e) => {
                     .catch((error) => {
                         // TODO: manejar error 500
                         console.log(error)
+                        dispatch({
+                            type: HOME_ACTIONS.SEARCH_FAILED,
+                            isLoading: false,
+                            remoteError: true,
+                        })
                     });
 
             }

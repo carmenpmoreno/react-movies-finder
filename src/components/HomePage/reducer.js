@@ -5,7 +5,8 @@ const INITIAL_STATE = {
     isLoading: false,
     movies: [],
     error: false,
-    errorMessage: ''
+    errorMessage: '',
+    remoteError: false,
 }
 
 export default (state =  INITIAL_STATE, action) => {
@@ -17,7 +18,8 @@ export default (state =  INITIAL_STATE, action) => {
                 isLoading: false,
                 movies: [],
                 error: false,
-                errorMessage: ''
+                errorMessage: '',
+                remoteError: false,
             }
 
         case HOME_ACTIONS.SEARCH_START:
@@ -32,13 +34,19 @@ export default (state =  INITIAL_STATE, action) => {
                 isLoading: action.isLoading,
                 movies: action.movies
             }
-            case HOME_ACTIONS.SEARCH_FAILED:
-                return {
-                    ...state,
-                    isLoading: action.isLoading,
-                    error: action.error,
-                    errorMessage: action.errorMessage
-                }
+        case HOME_ACTIONS.SEARCH_FAILED:
+            return {
+                ...state,
+                isLoading: action.isLoading,
+                error: action.error,
+                errorMessage: action.errorMessage
+            }
+        case HOME_ACTIONS.SEARCH_REMOTE_FAILED:
+            return {
+                ...state,
+                isLoading: action.isLoading,
+                remoteError: action.error,
+            }
 
         default:
             return state
