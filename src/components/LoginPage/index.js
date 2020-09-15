@@ -14,14 +14,9 @@ class LoginPage extends Component {
 
         return (
             <div className="container-fluid login-container">
-                <div className="login-welcome-container-mobile">
+                <div className="login-app-title-container"> 
                     <i className="fas fa-film"></i>
-                </div>
-                <div className="login-welcome-container-tablet">
-                    <div className="login-app-title-container"> 
-                        <i className="fas fa-film"></i>
-                        <h1 className="login-app-title">React movies finder</h1>
-                    </div>
+                    <h1 className="login-app-title">Movies finder</h1>
                 </div>
                 <div>
                     <h2 className="login-welcome">Bienvenido</h2>
