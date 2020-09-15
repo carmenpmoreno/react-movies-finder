@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
+import { getFavorite } from './helpers';
 
 export  const detectSafariBrowser = () => {
   var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari']);
@@ -10,7 +11,7 @@ export  const detectSafariBrowser = () => {
 
 const HomePage = (props) => {
 
-  // TODO: little dummie components to create from HomePage
+  // TODO: MoviesList and MovieItem components
 
   const {
     onInputChange,
@@ -19,7 +20,9 @@ const HomePage = (props) => {
     movies,
     error,
     errorMessage,
-    remoteError } = props
+    remoteError,
+    onFavoriteButtonClick,
+   } = props
 
     return (
       <section className="home-page-container">
@@ -72,13 +75,18 @@ const HomePage = (props) => {
                 <div className="card-body">
                   <img
                     className="home-page-movie-image"
+                    alt={movie.Title}
                     title={movie.Title}
                     src={movie.Poster}></img>
                     {/* <p>{`Año:${movie.Year}`}</p> */}
                 </div>
-                <div className="card-footer">
-
-                </div>
+                {/* <div className="card-footer"> */}
+                  <button
+                    type="button"
+                    // onClick={ () => onFavoriteButtonClick(movie)}
+                    onClick={ () => getFavorite(movie)}
+                    >Añadir a favoritos</button>
+                {/* </div> */}
               </li>
               
             )
@@ -106,6 +114,7 @@ const HomePage = (props) => {
 HomePage.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSearchButtonClick: PropTypes.func.isRequired,
+  // onFavoriteButtonClick: PropTypes.func.isRequired,
 }
 
 // HomePage.defaultValue = {    
@@ -128,6 +137,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onInputChange: (value) => dispatch(actions.getInputToSearch(value)),
   onSearchButtonClick: (e) => dispatch(actions.searchHandler(e)),
+  onFavoriteButtonClick: (movie) => dispatch(actions.getFavoriteMovie(movie)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

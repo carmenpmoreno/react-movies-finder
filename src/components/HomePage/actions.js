@@ -24,7 +24,6 @@ export const searchHandler = (e) => {
                 fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${inputToSearch}`)
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data);
                         data.Response === "True"
                         ? dispatch({
                             type: HOME_ACTIONS.SEARCH_SUCESS,
@@ -52,3 +51,8 @@ export const searchHandler = (e) => {
         
     }
 }
+
+export const getFavoriteMovie = ( movie ) => ({
+    type: HOME_ACTIONS.ADD_TO_FAVORITES_LIST,
+    movie: movie,
+})
