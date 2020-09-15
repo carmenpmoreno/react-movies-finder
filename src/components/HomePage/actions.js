@@ -14,7 +14,7 @@ export const searchHandler = (e) => {
         const state = getState().HomeReducer,
         inputToSearch = state.inputToSearch;
 
-            if(inputToSearch !== '') {
+            if(inputToSearch.length > 3) {
 
                 dispatch({
                     type: HOME_ACTIONS.SEARCH_START,
@@ -25,10 +25,26 @@ export const searchHandler = (e) => {
                     .then(resp => resp.json())
                     .then(data => {
                         console.log(data);
-                        dispatch({
+                        data.Response === "True"
+                        ? dispatch({
                             type: HOME_ACTIONS.SEARCH_SUCESS,
                             isLoading: false,
                             movies: data
+                        })
+                        : dispatch({
+                            type: HOME_ACTIONS.SEARCH_FAILED,
+                            isLoading: false,
+                            error: true,
+                            errorMessage: data.Error
+                        })
+                    })
+                    .catch((error) => {
+                        // TODO: manejar error 500
+                        console.log(error)
+                        dispatch({
+                            type: HOME_ACTIONS.SEARCH_FAILED,
+                            isLoading: false,
+                            remoteError: true,
                         })
                     });
 
