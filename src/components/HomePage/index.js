@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
-import { getFavorite } from './helpers';
+
+import MoviesList from '../Controls/MoviesList';
 
 export  const detectSafariBrowser = () => {
   var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari']);
@@ -10,8 +11,6 @@ export  const detectSafariBrowser = () => {
 }
 
 const HomePage = (props) => {
-
-  // TODO: MoviesList and MovieItem components
 
   const {
     onInputChange,
@@ -25,7 +24,7 @@ const HomePage = (props) => {
    } = props
 
     return (
-      <section className="home-page-container">
+      <section className="page-container">
         <div className="home-hero-container">
           {detectSafariBrowser
               ? <video playsInline autoPlay loop muted className="home-hero-video">
@@ -65,31 +64,12 @@ const HomePage = (props) => {
         </article>
 
         <article>
-          <ul className="home-page-movies-list container-fluid">
+          <ul className="page-movies-list-container container-fluid">
             {movies && error === false && remoteError === false
-            ? movies.map( movie => 
-              <li className="card home-page-movie-item" key={movie.imdbID} >
-                <div className="card-header">
-                  <h3 className="card-title home-page-movie-title">{movie.Title}</h3>
-                </div>
-                <div className="card-body">
-                  <img
-                    className="home-page-movie-image"
-                    alt={movie.Title}
-                    title={movie.Title}
-                    src={movie.Poster}></img>
-                    {/* <p>{`Año:${movie.Year}`}</p> */}
-                </div>
-                {/* <div className="card-footer"> */}
-                  <button
-                    type="button"
-                    // onClick={ () => onFavoriteButtonClick(movie)}
-                    onClick={ () => getFavorite(movie)}
-                    >Añadir a favoritos</button>
-                {/* </div> */}
-              </li>
-              
-            )
+            ? <MoviesList
+                movies={movies}
+                favoriteInfo={true}  
+              />
             : '' }
 
             {!movies && error === true && remoteError === false && errorMessage === "Movie not found!"
