@@ -10,9 +10,11 @@ export const setFavorite = ( movie ) => {
     if( favoritesFromLS === null ) {
         localStorage.setItem( 'favorites', JSON.stringify(freshFavorites) )
     } else {
-        oldFavorites = JSON.parse(favoritesFromLS)
-        oldFavorites.push(movie)
-        localStorage.setItem( 'favorites', JSON.stringify(oldFavorites) )
+        oldFavorites = JSON.parse(favoritesFromLS);
+        let oldFavoritesFiltered = oldFavorites.filter( oldFavorite => oldFavorite.imdbID !== movie.imdbID )
+        console.log(oldFavoritesFiltered)
+        oldFavoritesFiltered.push(movie);
+        localStorage.setItem( 'favorites', JSON.stringify(oldFavoritesFiltered) );
     }
 
 }
