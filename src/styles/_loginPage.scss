@@ -1,32 +1,156 @@
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     width: 100vw;
-    background-image: url(/assets/images/loggin-bg-2.PNG);
-    background-color: #011515;
+    background-color: #f8f5f4;
+    // border: 1px solid brown;
+}
+
+.login-app-title-container {
+    margin-left: -15px;
+    height: 30vh;
+    width: 100vw;
+    background-color: #f8f5f4;
+    background-image: url(/assets/images/loggin-bg-3.mod-dark.jpg);
     background-position: center;
     background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+
+.login-app-title {
+    max-width: 200px;
+    margin-left: 15px;
+}
+
+.login-welcome {
+    font-size: 2rem;
+    margin: 15px;
+    text-align: center;
+}
+
+.fa-film {
+    margin-left: 15px;
+    font-size: 2.5rem;
+    margin: 5px 15px 15px 5px;
+    color: white;
+    transform: rotate(30deg);
+}
+
 
 .login-card-label, .login-card-input, .login-card-button {
     margin: 15px;
+    opacity: 1;
 }
 
 .login-card {
-    background-color: #c7a38e;
-    border: none;
+    margin-top: 10vh;
+    max-width: 100vw;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-card-input {
+    padding-left: 10px;
+    background-color: #d8c1b6;
+    border: 1px solid #a7938a;
 }
 
 .login-card-button {
-    margin: auto;
+    margin: 15px auto;
     width: 150px;
-    background-color: #7e7775;
+    background-color: #927056;
     color: #fffffe;
     &:hover {
-        background-color: #9e908c;
+        background-color: #a57a5c;
         color: #fffffe;
+        transform: scale(1.1);
     
     }
+}
+
+@media all and (max-width: 768px) and (orientation: landscape) {
+
+    .login-app-title {
+        max-width: 100vw;
+    }
+
+    .login-card-label, .login-card-input, .login-card-button {
+        margin: 15px;
+        opacity: 1;
+    }
+    .login-card {
+        margin-top: 5vh;
+    }
+    
+}
+
+@media all and (min-width: 769px) {
+
+    .login-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .login-app-title-container {
+        width: 40vw;
+        display: flex;
+        flex-direction: row;
+        margin: 50px;
+    }
+
+    .login-app-title {
+        font-size: 2rem;
+    }
+
+    .login-welcome {
+        margin: 30px;
+    }
+    
+    .login-card {
+        margin-top: 0;
+        margin-right: 20vw;
+        max-width: 300px;
+        text-align: center;
+        display: block;
+    }
+}
+
+@media all and (min-width: 1024px) {
+
+    .login-app-title-container {
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 40vw;
+        height: 100vh;
+        margin: 0 -15px;
+        padding: 45px;
+    }
+
+    .login-app-title {
+        font-size: 3rem;
+    }
+
+    .login-welcome {
+        margin: 15px;
+        text-align: left; 
+    }
+
+    .login-card {
+        text-align: left;
+    }
+
+    .login-card-button {
+        margin: 15px 0 0 15px;
+        &:hover {
+            margin-left: 22px;
+        }
+    }
+
 }

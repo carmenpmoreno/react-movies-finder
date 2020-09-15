@@ -4,10 +4,9 @@ import Layout from './components/Layout/index';
 import LoginPage from './components/LoginPage';
 import './styles/moviesFinder.scss';
 
-const App = (props) => {
+const App = () => {
 
-  const { isLoadingUser } = props,
-    userName = sessionStorage.getItem('userName');
+  const userName = sessionStorage.getItem('userName');
 
   return userName
     ? <Layout/>

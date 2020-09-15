@@ -1,2 +1,9 @@
-// base
+// general
+@import "general";
+
+// components
+@import "loginPage";
+@import "homePage";
+
+// overrides
 @import "overrides";

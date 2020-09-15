@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
-import './index.css'
 
 class LoginPage extends Component {
 
@@ -14,26 +13,32 @@ class LoginPage extends Component {
         const { onUserNameChange, onUserLogin } = this.props
 
         return (
-            <div
-                title="Screenshot from video by UzbekIL from Pixabay " 
-                className="container-fluid login-container">
-                <div className="card login-card">
-                    <label className="login-card-label">
-                        Nombre usuario
-                    </label>
-                    <input
-                        className="login-card-input"                    
-                        type="text"
-                        autoComplete="off"
-                        maxLength="100"
-                        placeholder="Ej: Movie friki user" 
-                        onChange={(e) => onUserNameChange(e.target.value)}
-                    ></input>
-                    <button
-                        onClick={onUserLogin}
-                        className="login-card-button btn"
-                    >Entrar</button>
+            <div className="container-fluid login-container">
+                <div className="login-app-title-container"> 
+                    <i className="fas fa-film"></i>
+                    <h1 className="login-app-title">Movies finder</h1>
                 </div>
+                <div>
+                    <h2 className="login-welcome">Bienvenido</h2>
+                    <div className="login-card">
+                        <label className="login-card-label">
+                            Nombre usuario
+                        </label>
+                        <input
+                            className="login-card-input"                    
+                            type="text"
+                            autoComplete="off"
+                            maxLength="100"
+                            placeholder="Ej: Movie friki" 
+                            onChange={(e) => onUserNameChange(e.target.value)}
+                        ></input>
+                        <button
+                            onClick={onUserLogin}
+                            className="login-card-button btn"
+                        >Entrar</button>
+                    </div>
+                </div>
+                
             </div>
         );
     }
