@@ -16,7 +16,7 @@ const HomePage = (props) => {
     inputToSearch } = props
 
     return (
-      <section className="home-page-container container-fluid">
+      <section className="home-page-container">
         <div className="home-hero-container">
           {/* <div className="home-hero-video"></div> */}
           {detectSafariBrowser
