@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
 
+export  const detectSafariBrowser = () => {
+  var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari']);
+  return isSafari
+}
+
 const HomePage = (props) => {
 
   const {
@@ -11,25 +16,46 @@ const HomePage = (props) => {
     inputToSearch } = props
 
     return (
-      <section className="home-page-container container-fluid">
-          <h1>Buscador de películas y series</h1>
-          <article className="search-form-wrapper">
-              <form className="search-form">
-                  <input
-                    className="input"
-                    onChange={(e) => onInputChange(e.target.value)}
-                    type="text"
-                    placeholder="Ej: Star Wars"
-                    value={inputToSearch}
-                  />
-                  <button 
-                    onClick={(e) => onSearchButtonClick(e)}
-                    type="submit" 
-                    className="button is-info">
-                      Buscar
-                  </button>
-              </form>        
-          </article>
+      <section className="home-page-container">
+        <div className="home-hero-container">
+          {detectSafariBrowser
+              ? <video playsInline autoPlay loop muted className="home-hero-video">
+                  <source src="./assets/videos/Film Strip - 5129.mp4" type="video/mp4" />
+                  Your browser does not support HTML5 video.
+              </video>
+              : <video autoPlay loop muted className="home-hero-video" >
+                  <source src="./assets/videos/Film Strip - 5129.mp4" type="video/mp4" />
+                    Your browser does not support HTML5 video.
+              </video>
+              }
+          <div className="home-app-title-container"> 
+                <i className="fas fa-film"></i>
+                <h1 className="login-app-title">Movies finder</h1>
+          </div>
+        </div>
+
+        <article className="home-finder-container">
+          <form>
+              <label className="home-finder-label">
+                  Buscar por título
+              </label>
+              <input
+                className="login-card-input"
+                onChange={(e) => onInputChange(e.target.value)}
+                type="text"
+                placeholder="Ej: Star Wars"
+                value={inputToSearch}
+              />
+              <button 
+                onClick={(e) => onSearchButtonClick(e)}
+                type="submit" 
+                className="btn btn-search">
+                  <i class="fas fa-search"></i>
+              </button>
+          </form>        
+        </article>
+
+          
           
         </section>
       );

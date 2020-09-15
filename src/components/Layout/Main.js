@@ -7,7 +7,7 @@ import FavoritesPage from '../FavoritesPage'
 
 const Main = () => {
     return (
-        <main className="container-fluid">
+        <main>
             <Switch>
                 <Route 
                     exact path='/'

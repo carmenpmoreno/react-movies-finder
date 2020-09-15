@@ -1,7 +1,55 @@
 .home-page-container {
-    height: 100vh;
-    width: 100vw;
-    margin-left: -15px;
+    min-height: 100vh;
     background-color: #f8f5f4;
-    // background-color: brown;
+}
+
+.home-app-title-container {
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5vh;
+    color: white;
+}
+
+.home-hero-video {
+    height: 30vh;
+    width: 100vw;
+    background-color: #cb956a;
+    object-fit: cover;
+}
+
+.home-finder-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20vh;
+}
+
+.home-finder-label {
+    display: none;
+}
+
+@media all and ( min-width: 1024px) {
+    .home-app-title-container {
+        width: 40vw;
+    }
+    .home-hero-video {
+        height: 40vh;
+    }
+}
+
+@media all and ( min-width: 1280px) {
+    .home-app-title-container {
+        width: 30vw;
+    }
+}
+
+@media all and ( min-width: 1440px) {
+    .home-app-title-container {
+        width: 25vw;
+    }
 }
