@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     error: false,
     errorMessage: '',
     remoteError: false,
+    favorites: [],
 }
 
 export default (state =  INITIAL_STATE, action) => {
@@ -20,6 +21,7 @@ export default (state =  INITIAL_STATE, action) => {
                 error: false,
                 errorMessage: '',
                 remoteError: false,
+                favorites: [],
             }
 
         case HOME_ACTIONS.SEARCH_START:
@@ -46,6 +48,14 @@ export default (state =  INITIAL_STATE, action) => {
                 ...state,
                 isLoading: action.isLoading,
                 remoteError: action.error,
+            }
+        case HOME_ACTIONS.ADD_TO_FAVORITES_LIST:
+            return {
+                ...state,
+                favorites: [
+                    ...state.favorites,
+                    action.movie
+                ],
             }
 
         default:

@@ -1,4 +1,4 @@
-.home-page-container {
+.page-container {
     min-height: 100vh;
     background-color: #423146;
 }
@@ -34,7 +34,7 @@
 
 // MOVIES LIST
 
-.home-page-movies-list {
+.page-movies-list-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -44,18 +44,18 @@
     margin-bottom: 0;
 }
 
-.home-page-movie-item {
+.page-movie-item {
     width: 300px;
     height: 500px;
     background-color: #d8c1b6;
     margin: 15px 0;
 }
 
-.home-page-movie-title {
+.page-movie-title {
     font-size: 1.25rem;
 }
 
-.home-page-movie-image {
+.page-movie-image {
     width: 230px;
     max-height: 340px;
 }
@@ -72,13 +72,13 @@
 
     // MOVIES LIST
 
-    .home-page-movies-list {
+    .page-movies-list-container {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
     }
 
-    .home-page-movie-item {
+    .page-movie-item {
         background-color: #d8c1b6;
         margin: 15px 0;
     }   

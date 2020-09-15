@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
 
+import MoviesList from '../Controls/MoviesList';
+
 export  const detectSafariBrowser = () => {
   var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari']);
   return isSafari
 }
 
 const HomePage = (props) => {
-
-  // TODO: little dummie components to create from HomePage
 
   const {
     onInputChange,
@@ -19,10 +19,12 @@ const HomePage = (props) => {
     movies,
     error,
     errorMessage,
-    remoteError } = props
+    remoteError,
+    onFavoriteButtonClick,
+   } = props
 
     return (
-      <section className="home-page-container">
+      <section className="page-container">
         <div className="home-hero-container">
           {detectSafariBrowser
               ? <video playsInline autoPlay loop muted className="home-hero-video">
@@ -62,26 +64,12 @@ const HomePage = (props) => {
         </article>
 
         <article>
-          <ul className="home-page-movies-list container-fluid">
+          <ul className="page-movies-list-container container-fluid">
             {movies && error === false && remoteError === false
-            ? movies.map( movie => 
-              <li className="card home-page-movie-item" key={movie.imdbID} >
-                <div className="card-header">
-                  <h3 className="card-title home-page-movie-title">{movie.Title}</h3>
-                </div>
-                <div className="card-body">
-                  <img
-                    className="home-page-movie-image"
-                    title={movie.Title}
-                    src={movie.Poster}></img>
-                    {/* <p>{`Año:${movie.Year}`}</p> */}
-                </div>
-                <div className="card-footer">
-
-                </div>
-              </li>
-              
-            )
+            ? <MoviesList
+                movies={movies}
+                favoriteInfo={true}  
+              />
             : '' }
 
             {!movies && error === true && remoteError === false && errorMessage === "Movie not found!"
@@ -106,6 +94,7 @@ const HomePage = (props) => {
 HomePage.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSearchButtonClick: PropTypes.func.isRequired,
+  // onFavoriteButtonClick: PropTypes.func.isRequired,
 }
 
 // HomePage.defaultValue = {    
@@ -128,6 +117,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onInputChange: (value) => dispatch(actions.getInputToSearch(value)),
   onSearchButtonClick: (e) => dispatch(actions.searchHandler(e)),
+  onFavoriteButtonClick: (movie) => dispatch(actions.getFavoriteMovie(movie)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
