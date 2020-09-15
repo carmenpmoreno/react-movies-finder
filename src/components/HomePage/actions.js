@@ -37,6 +37,10 @@ export const searchHandler = (e) => {
                             error: true,
                             errorMessage: data.Error
                         })
+                    })
+                    .catch((error) => {
+                        // TODO: manejar error 500
+                        console.log(error)
                     });
 
             }

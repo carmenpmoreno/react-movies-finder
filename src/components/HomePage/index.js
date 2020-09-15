@@ -80,9 +80,10 @@ const HomePage = (props) => {
               
             )
             : '' }
-            {!movies && error === false && errorMessage !== "Movie not found!"
-              ? <p>Introduzca el título de la película o serie que quiera buscar</p>
-              : <p>No hemos encontrado la película o serie solicitada</p>
+
+            {!movies && error === true && errorMessage === "Movie not found!"
+              ? <p>No hemos encontrado la película o serie solicitada</p>
+              : ''
             }
           </ul>
         </article>
