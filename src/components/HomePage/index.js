@@ -18,7 +18,6 @@ const HomePage = (props) => {
     return (
       <section className="home-page-container">
         <div className="home-hero-container">
-          {/* <div className="home-hero-video"></div> */}
           {detectSafariBrowser
               ? <video playsInline autoPlay loop muted className="home-hero-video">
                   <source src="./assets/videos/Film Strip - 5129.mp4" type="video/mp4" />
