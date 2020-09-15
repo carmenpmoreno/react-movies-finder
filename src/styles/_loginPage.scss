@@ -2,7 +2,7 @@
     height: 100vh;
     width: 100vw;
     background-color: #f8f5f4;
-    border: 1px solid brown;
+    // border: 1px solid brown;
 }
 
 .login-app-title-container {
@@ -107,7 +107,10 @@
 
     .login-app-title {
         font-size: 2rem;
-        max-width: 200px;
+    }
+
+    .login-welcome {
+        margin: 30px;
     }
     
     .login-card {
@@ -125,11 +128,20 @@
         justify-content: flex-start;
         align-items: flex-start;
         width: 40vw;
+        height: 100vh;
+        margin: 0 -15px;
+        padding: 45px;
     }
+
+    .login-app-title {
+        font-size: 3rem;
+    }
+
     .login-welcome {
         margin-right: 30vw;
         text-align: left; 
     }
+
     .login-card {
         text-align: left;
     }
@@ -138,5 +150,10 @@
         margin: 0;
         margin-left: 15px;
     }
+
+}
+
+@media all and (min-width: 1024px) {
+
 
 }
