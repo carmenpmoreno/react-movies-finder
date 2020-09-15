@@ -1,0 +1,21 @@
+.header-container {
+    background-color: #423146;
+}
+
+.header-nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #f8f5f4;
+    a {
+        color: #f8f5f4;
+    }
+    .fa-film {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+}
+
+.header-nav-item {
+    margin: 5px 15px;
+}

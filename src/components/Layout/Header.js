@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div>
-            <p>Header</p>
-            <Link to={'/favorites'}>
-                <span>Favoritos</span>
-            </Link>
-        </div>
+        <header className="header-container">
+            <nav className="header-nav-container">
+                <Link className="header-nav-item" to={'/'}>
+                    <i className="fas fa-film"></i>
+                </Link>
+                <Link className="header-nav-item" to={'/favorites'}>
+                    <span>Favoritos</span>
+                </Link>
+            </nav>
+        </header>
     );
 };
 
