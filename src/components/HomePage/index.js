@@ -11,7 +11,7 @@ const HomePage = (props) => {
     inputToSearch } = props
 
     return (
-      <section>
+      <section className="home-page-container container-fluid">
           <h1>Buscador de películas y series</h1>
           <article className="search-form-wrapper">
               <form className="search-form">
