@@ -22,7 +22,7 @@ const MoviesList = ( { movies, favoriteInfo } ) => {
                         ? <button
                             type="button"
                             onClick={ () => setFavorite(movie)}
-                            >Añadir a favoritos</button>
+                            ><i className="fas fa-star"></i></button>
                             : ''
                         }
                     </div>
