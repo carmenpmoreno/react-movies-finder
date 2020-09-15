@@ -4,6 +4,8 @@ const INITIAL_STATE = {
     inputToSearch: '',
     isLoading: false,
     movies: [],
+    error: false,
+    errorMessage: ''
 }
 
 export default (state =  INITIAL_STATE, action) => {
@@ -11,8 +13,11 @@ export default (state =  INITIAL_STATE, action) => {
 
         case HOME_ACTIONS.GET_INPUT_TO_SEARCH:
             return {
-                ...state,
-                inputToSearch: action.inputToSearch                
+                inputToSearch: action.inputToSearch,
+                isLoading: false,
+                movies: [],
+                error: false,
+                errorMessage: ''
             }
 
         case HOME_ACTIONS.SEARCH_START:
@@ -27,6 +32,13 @@ export default (state =  INITIAL_STATE, action) => {
                 isLoading: action.isLoading,
                 movies: action.movies
             }
+            case HOME_ACTIONS.SEARCH_FAILED:
+                return {
+                    ...state,
+                    isLoading: action.isLoading,
+                    error: action.error,
+                    errorMessage: action.errorMessage
+                }
 
         default:
             return state

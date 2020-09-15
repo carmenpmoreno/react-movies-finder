@@ -14,7 +14,9 @@ const HomePage = (props) => {
     onInputChange,
     onSearchButtonClick,
     inputToSearch,
-    movies, } = props
+    movies,
+    error,
+    errorMessage } = props
 
     return (
       <section className="home-page-container">
@@ -58,7 +60,7 @@ const HomePage = (props) => {
 
         <article>
           <ul className="home-page-movies-list container-fluid">
-            {movies
+            {movies && error === false
             ? movies.map( movie => 
               <li className="card home-page-movie-item" key={movie.imdbID} >
                 <div className="card-header">
@@ -77,7 +79,11 @@ const HomePage = (props) => {
               </li>
               
             )
-            : <p>Introduzca el título de la película o serie que quiera buscar</p>}
+            : '' }
+            {!movies && error === false && errorMessage !== "Movie not found!"
+              ? <p>Introduzca el título de la película o serie que quiera buscar</p>
+              : <p>No hemos encontrado la película o serie solicitada</p>
+            }
           </ul>
         </article>
 
@@ -104,6 +110,8 @@ const mapStateToProps = (state) => {
   return {
     inputToSearch: current.inputToSearch,
     movies: current.movies.Search,
+    error: current.error,
+    errorMessage: current.errorMessage
   }
 }
 

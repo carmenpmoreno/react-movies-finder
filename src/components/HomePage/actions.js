@@ -25,10 +25,17 @@ export const searchHandler = (e) => {
                     .then(resp => resp.json())
                     .then(data => {
                         console.log(data);
-                        dispatch({
+                        data.Response === "True"
+                        ? dispatch({
                             type: HOME_ACTIONS.SEARCH_SUCESS,
                             isLoading: false,
                             movies: data
+                        })
+                        : dispatch({
+                            type: HOME_ACTIONS.SEARCH_FAILED,
+                            isLoading: false,
+                            error: true,
+                            errorMessage: data.Error
                         })
                     });
 
