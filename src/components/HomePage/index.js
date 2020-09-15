@@ -10,6 +10,8 @@ export  const detectSafariBrowser = () => {
 
 const HomePage = (props) => {
 
+  // TODO: little dummie components to create from HomePage
+
   const {
     onInputChange,
     onSearchButtonClick,
