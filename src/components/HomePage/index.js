@@ -13,7 +13,8 @@ const HomePage = (props) => {
   const {
     onInputChange,
     onSearchButtonClick,
-    inputToSearch } = props
+    inputToSearch,
+    movies, } = props
 
     return (
       <section className="home-page-container">
@@ -50,9 +51,34 @@ const HomePage = (props) => {
                 onClick={(e) => onSearchButtonClick(e)}
                 type="submit" 
                 className="btn btn-search">
-                  <i class="fas fa-search"></i>
+                  <i className="fas fa-search"></i>
               </button>
           </form>        
+        </article>
+
+        <article>
+          <ul className="home-page-movies-list container-fluid">
+            {movies
+            ? movies.map( movie => 
+              <li className="card home-page-movie-item" key={movie.imdbID} >
+                <div className="card-header">
+                  <h3 className="card-title home-page-movie-title">{movie.Title}</h3>
+                </div>
+                <div className="card-body">
+                  <img
+                    className="home-page-movie-image"
+                    title={movie.Title}
+                    src={movie.Poster}></img>
+                    {/* <p>{`Año:${movie.Year}`}</p> */}
+                </div>
+                <div className="card-footer">
+
+                </div>
+              </li>
+              
+            )
+            : <p>Introduzca el título de la película o serie que quiera buscar</p>}
+          </ul>
         </article>
 
           
@@ -76,7 +102,8 @@ const mapStateToProps = (state) => {
   const current = state.HomeReducer;
 
   return {
-    inputToSearch: current.inputToSearch
+    inputToSearch: current.inputToSearch,
+    movies: current.movies.Search,
   }
 }
 

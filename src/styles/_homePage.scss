@@ -1,6 +1,6 @@
 .home-page-container {
     min-height: 100vh;
-    background-color: #f8f5f4;
+    background-color: #423146;
 }
 
 .home-app-title-container {
@@ -17,7 +17,7 @@
 
 .home-hero-video {
     height: 30vh;
-    width: 100vw;
+    width: 100%;
     background-color: #cb956a;
     object-fit: cover;
 }
@@ -26,20 +26,62 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 20vh;
 }
 
 .home-finder-label {
     display: none;
 }
 
+// MOVIES LIST
+
+.home-page-movies-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.home-page-movie-item {
+    width: 300px;
+    height: 500px;
+    background-color: #d8c1b6;
+    margin: 15px 0;
+}
+
+.home-page-movie-title {
+    font-size: 1.25rem;
+}
+
+.home-page-movie-image {
+    width: 230px;
+    max-height: 340px;
+}
+
 @media all and ( min-width: 1024px) {
+
     .home-app-title-container {
         width: 40vw;
     }
+
     .home-hero-video {
         height: 40vh;
     }
+
+    // MOVIES LIST
+
+    .home-page-movies-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .home-page-movie-item {
+        background-color: #d8c1b6;
+        margin: 15px 0;
+    }   
 }
 
 @media all and ( min-width: 1280px) {
