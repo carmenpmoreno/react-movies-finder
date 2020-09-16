@@ -1,8 +1,11 @@
 import React from 'react';
 
 const DetailPage = ( { movies, params } ) => {
+
+    if( movies === undefined ) {
+        movies = JSON.parse(sessionStorage.getItem('movies'))
+    }
     
-    console.log(movies, params.detailId)
     const movieId = params.detailId,
         movie = movies.find( movie => movie.imdbID === movieId );
 
