@@ -3,7 +3,8 @@ export const setFavorite = ( movie ) => {
 
     let freshFavorites = [ movie ],
         oldFavorites = [],
-        favoritesFromLS = [];
+        favoritesFromLS = [],
+        favoriteMessage = document.querySelector('#favorite-message');
 
     favoritesFromLS = localStorage.getItem( 'favorites' );
 
@@ -16,6 +17,8 @@ export const setFavorite = ( movie ) => {
         localStorage.setItem( 'favorites', JSON.stringify(oldFavoritesFiltered) );
     }
 
+    favoriteMessage.classList.remove('favorite-message-hidden');
+    favoriteMessage.classList.add('favorite-message-show');
 }
 
 export const getFavorites = () => {
@@ -32,4 +35,11 @@ export const getFavorites = () => {
         return favorites
     }
 
+}
+
+export const closeFavoriteModal = () => {
+    let favoriteMessage = document.querySelector('#favorite-message');
+
+    favoriteMessage.classList.add('favorite-message-hidden');
+    favoriteMessage.classList.remove('favorite-message-show');
 }

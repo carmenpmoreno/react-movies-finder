@@ -39,11 +39,9 @@ const MoviesList = ( { movies, favoriteInfo } ) => {
                         
                     </div>
                     
-                </li>
-                
-                )
+                </li>)
             }
-            
+
         </>
     );
 };

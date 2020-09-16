@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import * as actions from './actions';
 
 import MoviesList from '../Controls/MoviesList';
+import { closeFavoriteModal } from '../helpers';
 
 export  const detectSafariBrowser = () => {
   var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari']);
@@ -63,6 +64,18 @@ const HomePage = (props) => {
         </article>
 
         <article>
+          <div id="favorite-message" className="favorite-modal-container favorite-message-hidden">
+            <div className="favorite-modal">
+              <p>El elemento seleccionado ha sido añadido a favoritos</p>
+              <button
+              type="button"
+              className="btn btn-light"
+              onClick={() => closeFavoriteModal()}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
           <ul className="page-movies-list-container container-fluid">
             {movies && error === false && remoteError === false
             ? <MoviesList
