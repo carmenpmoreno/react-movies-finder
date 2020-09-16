@@ -23,7 +23,7 @@ const MoviesList = ( { movies, favoriteInfo } ) => {
                         ? <button
                             type="button"
                             onClick={ () => setFavorite(movie)}
-                            ><i className="fas fa-star"></i></button>
+                            ><i className="fas fa-star">Añadir</i></button>
                             : ''
                         }
                         <Link to={`/detail/${movie.imdbID}`}>

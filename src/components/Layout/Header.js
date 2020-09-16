@@ -9,7 +9,7 @@ const Header = () => {
                     <i className="fas fa-film"></i>
                 </Link>
                 <Link className="header-nav-item" to={'/favorites'}>
-                    <span>Favoritos</span>
+                    <span><i className="fas fa-star">Favoritos</i></span>
                 </Link>
             </nav>
         </header>
