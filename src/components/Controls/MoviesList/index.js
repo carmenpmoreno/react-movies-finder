@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { setFavorite } from '../../helpers';
 
 const MoviesList = ( { movies, favoriteInfo } ) => {
@@ -46,5 +47,10 @@ const MoviesList = ( { movies, favoriteInfo } ) => {
         </>
     );
 };
+
+MoviesList.propTypes = {
+    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    favoriteInfo: PropTypes.bool,
+}
 
 export default MoviesList;

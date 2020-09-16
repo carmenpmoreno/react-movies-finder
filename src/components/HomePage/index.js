@@ -72,12 +72,12 @@ const HomePage = (props) => {
             : '' }
 
             {!movies && error === true && remoteError === false && errorMessage === "Movie not found!"
-              ? <p>No hemos encontrado la película o serie solicitada</p>
+              ? <p className="page-movies-list-message">No hemos encontrado la película o serie solicitada</p>
               : ''
             }
 
             {!movies && error === false && remoteError === true
-              ? <p>Lo sentimos, ha habido un error del servidor, inténtelo de nuevo en unos instantes</p>
+              ? <p className="page-movies-list-message">Lo sentimos, ha habido un error del servidor, inténtelo de nuevo en unos instantes</p>
               : ''
             }
           </ul>
@@ -93,6 +93,10 @@ const HomePage = (props) => {
 HomePage.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSearchButtonClick: PropTypes.func.isRequired,
+  inputToSearch: PropTypes.string,
+  movies: PropTypes.arrayOf(PropTypes.object),
+  error: PropTypes.bool,
+  errorMessage: PropTypes.string,
 }
 
 const mapStateToProps = (state) => {

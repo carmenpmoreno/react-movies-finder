@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DetailPage = ( { movies, params } ) => {
 
@@ -32,5 +33,10 @@ const DetailPage = ( { movies, params } ) => {
         </section>
     );
 };
+
+DetailPage.propTypes = {
+    movies: PropTypes.arrayOf(PropTypes.object),
+    params: PropTypes.object,
+}
 
 export default DetailPage;
