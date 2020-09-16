@@ -95,10 +95,6 @@ HomePage.propTypes = {
   onSearchButtonClick: PropTypes.func.isRequired,
 }
 
-// HomePage.defaultValue = {    
-  
-// }
-
 const mapStateToProps = (state) => {
 
   const current = state.HomeReducer;

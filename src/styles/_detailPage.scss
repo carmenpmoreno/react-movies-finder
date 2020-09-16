@@ -1,0 +1,34 @@
+.detail-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-page-movie-title {
+    font-size: 1.5rem;
+    margin: 30px;
+}
+
+.detail-page-movie-image {
+    width: 230px;
+    height: 340px;
+}
+
+.detail-page-info-list {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    li {
+        margin: 10px;
+    }
+}
+
+@media all and (min-width: 1024px) {
+
+    .detail-page-movie-image {
+        width: 330px;
+        height: 440px;
+    }
+    
+}
