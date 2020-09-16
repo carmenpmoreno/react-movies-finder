@@ -1,6 +1,5 @@
 # Introduction 
-Movies finder with films detail and favourites pages. 
-A responsive web and a react and react-redux project.
+Movies finder with film detail. Includes a favourites pages. A responsive web and a React and Redux project.
 
 # Getting Started
 1.	Installation process
