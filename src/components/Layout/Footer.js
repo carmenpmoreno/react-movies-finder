@@ -8,7 +8,7 @@ const Footer = () => {
             </span>
             <span className="footer-item">
                 <small>
-                    Versión 0.8.0
+                    Versión 0.9.0
                 </small>
             </span>
             <span className="footer-item">
