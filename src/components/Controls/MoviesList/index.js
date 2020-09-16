@@ -18,17 +18,24 @@ const MoviesList = ( { movies, favoriteInfo } ) => {
                             title={movie.Title}
                             src={movie.Poster}></img>
                     </div>
-                    <div className="card-footer">
+                    <div className="card-footer page-movie-card-footer">
                         {favoriteInfo === true
                         ? <button
                             type="button"
+                            className="btn btn-light page-movie-button"
                             onClick={ () => setFavorite(movie)}
                             ><i className="fas fa-star">Añadir</i></button>
                             : ''
                         }
-                        <Link to={`/detail/${movie.imdbID}`}>
-                            Detalle
-                        </Link>
+                        <button
+                            type="button"
+                            className="btn btn-light page-movie-button"
+                            >
+                            <Link to={`/detail/${movie.imdbID}`}>
+                                Saber más
+                            </Link>
+                        </button>
+                        
                     </div>
                     
                 </li>
