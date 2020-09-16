@@ -48,6 +48,7 @@ class LoginPage extends Component {
 LoginPage.propTypes = {
     user: PropTypes.string.isRequired,
     onUserNameChange: PropTypes.func.isRequired,
+    onUserLogin: PropTypes.func.isRequired,
 }
 
 LoginPage.defaultValue = {    
@@ -69,5 +70,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
-
-// export default LoginPage;

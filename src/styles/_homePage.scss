@@ -53,11 +53,40 @@
 
 .page-movie-title {
     font-size: 1.25rem;
+    color: #423146;
+    font-weight: 700;
 }
 
 .page-movie-image {
     width: 230px;
-    height: 340px;
+    height: 300px;
+}
+
+.page-movie-card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.page-movie-button {
+    color: #423146;
+    font-weight: 500;
+    &:hover {
+        background-color: #423146;
+        color: white;
+    }
+    a {
+        color: #423146;
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+.page-movies-list-message {
+    text-align: center;
+    margin: 30px;
 }
 
 @media all and ( min-width: 1024px) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import HomePage from '../HomePage'
 import DetailPage from '../DetailPage'
@@ -31,6 +32,11 @@ const Main = ( {movies} ) => {
         </main>
     );
 };
+
+Main.propTypes = {
+    movies: PropTypes.arrayOf(PropTypes.object),
+}
+
 
 const mapStateToProps = (state) => {
 
