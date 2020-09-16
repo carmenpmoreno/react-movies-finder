@@ -43,8 +43,6 @@ export const searchHandler = (e) => {
 
                     })
                     .catch((error) => {
-                        // TODO: manejar error 500
-                        console.log(error)
                         dispatch({
                             type: HOME_ACTIONS.SEARCH_FAILED,
                             isLoading: false,
