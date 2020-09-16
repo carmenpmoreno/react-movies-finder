@@ -1,5 +1,6 @@
 import React from 'react';
-import { setFavorite } from '../../helpers'
+import {Link} from 'react-router-dom';
+import { setFavorite } from '../../helpers';
 
 const MoviesList = ( { movies, favoriteInfo } ) => {
     return (
@@ -25,6 +26,9 @@ const MoviesList = ( { movies, favoriteInfo } ) => {
                             ><i className="fas fa-star"></i></button>
                             : ''
                         }
+                        <Link to={`/detail/${movie.imdbID}`}>
+                            Detalle
+                        </Link>
                     </div>
                     
                 </li>
