@@ -24,22 +24,25 @@ export const searchHandler = (e) => {
                 fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${inputToSearch}`)
                     .then(resp => resp.json())
                     .then(data => {
-                        data.Response === "True"
-                        ? dispatch({
-                            type: HOME_ACTIONS.SEARCH_SUCESS,
-                            isLoading: false,
-                            movies: data
-                        })
-                        : dispatch({
-                            type: HOME_ACTIONS.SEARCH_FAILED,
-                            isLoading: false,
-                            error: true,
-                            errorMessage: data.Error
-                        })
+
+                        if(data.Response === "True") {
+                            dispatch({
+                                type: HOME_ACTIONS.SEARCH_SUCESS,
+                                isLoading: false,
+                                movies: data
+                            })
+                            sessionStorage.setItem('movies', JSON.stringify(data.Search))
+                        } else {
+                            dispatch({
+                                type: HOME_ACTIONS.SEARCH_FAILED,
+                                isLoading: false,
+                                error: true,
+                                errorMessage: data.Error
+                            })
+                        }
+
                     })
                     .catch((error) => {
-                        // TODO: manejar error 500
-                        console.log(error)
                         dispatch({
                             type: HOME_ACTIONS.SEARCH_FAILED,
                             isLoading: false,

@@ -20,7 +20,6 @@ const HomePage = (props) => {
     error,
     errorMessage,
     remoteError,
-    onFavoriteButtonClick,
    } = props
 
     return (
@@ -94,12 +93,7 @@ const HomePage = (props) => {
 HomePage.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSearchButtonClick: PropTypes.func.isRequired,
-  // onFavoriteButtonClick: PropTypes.func.isRequired,
 }
-
-// HomePage.defaultValue = {    
-  
-// }
 
 const mapStateToProps = (state) => {
 
@@ -117,7 +111,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onInputChange: (value) => dispatch(actions.getInputToSearch(value)),
   onSearchButtonClick: (e) => dispatch(actions.searchHandler(e)),
-  onFavoriteButtonClick: (movie) => dispatch(actions.getFavoriteMovie(movie)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
