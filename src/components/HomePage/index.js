@@ -66,7 +66,7 @@ const HomePage = (props) => {
         <article>
           <div id="favorite-message" className="favorite-modal-container favorite-message-hidden">
             <div className="favorite-modal">
-              <p>El elemento seleccionado ha sido añadido a favoritos</p>
+              <p>El elemento seleccionado ha sido añadido a la página de favoritos</p>
               <button
               type="button"
               className="btn btn-light"
