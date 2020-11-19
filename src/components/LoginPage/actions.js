@@ -10,15 +10,15 @@ export const setUserName = () => {
     return (dispatch, getState) => {      
         
         const state = getState().LoginReducer,
-            userName = state.user;
+            currentuserName = state.user;
             // mock login
             fetch('./data/users.json')
             .then( response => response.json() )
             .then( users => {
-                const userNameAuthorized =  users.find( user => user.name === userName ) 
+                const userNameAuthorized =  users.find( user => user.name === currentuserName ) 
 
                 if (userNameAuthorized !== undefined ) {
-                    sessionStorage.setItem('userName', userName)
+                    sessionStorage.setItem('userName', currentuserName)
                     dispatch({
                         type: LOGIN_ACTIONS.SET_USER_NAME,
                         isLoadingUser: false,
