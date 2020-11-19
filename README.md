@@ -1,6 +1,7 @@
 # Introduction 
 Movies finder with film detail. Includes a favourites pages. A responsive web and a React and Redux project.
-To login, user name: usuario general
+
+To login, enter the user "usuario general"
 
 # Getting Started
 1.	Installation process
@@ -18,4 +19,4 @@ To login, user name: usuario general
     - yarn build
 
 # Latest updates
-- Mock users.json and feedback message on login page if user not exist 
+- Mock users.json and feedback message on login page if user does not exist
