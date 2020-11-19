@@ -1,3 +1,21 @@
+.profile-menu-button {
+    display: block;
+    color: #147f74;
+    margin: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #654d6b;
+    border: none;
+    color: #f8f5f4;
+}
+
+.profile-menu-button-active {
+    color: #059E88;
+}
+
 .profile-menu-wrapper {
     margin-left: auto;
 }
@@ -5,9 +23,9 @@
 #profile-menu {
     z-index: 20;
     position: fixed;
-    top: 40px;
-    right: 8px;
-    background-color: #147f74;
+    top: 33px;
+    right: 0px;
+    background-color: #635267;
     list-style: none;
     font-size: 0.8rem;
     cursor: pointer;
@@ -20,17 +38,17 @@
 }
 
 .profile-menu-user-name-container {
-    background-color: #cee2e1;
+    background-color: #d8c1b6;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #147f74;
+    color: #423146;
 }
 
 .fa-user-circle {
     font-size: 3rem;
-    color: #147f74;
+    color: #423146;
 }
 
 #profile-menu ul li {
@@ -53,7 +71,7 @@
     background-color: #ffffff;
     border-radius: 5px;
     padding: 0.3rem 0.5rem;
-    color: #059E88;
+    color: #423146;
     margin: 10px;
     font-size: 0.8rem;
     width: 110px;
@@ -64,22 +82,11 @@
     color: #147f74;
 }
   
-.profile-menu-button {
-    display: block;
-    color: #147f74;
-    margin: 5px;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-.profile-menu-button-active {
-    color: #059E88;
-}
 
 @media all and (min-width: 768px ) {
 
     #profile-menu {
-        top: 55px;
+        top: 34px;
     }    
 
     .profile-menu-wrapper {

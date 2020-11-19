@@ -5,11 +5,12 @@ import UserMenu from '../Controls/UserMenu'
 
 const Header = () => {
     const currentUser = sessionStorage.getItem('userName');
-    const currentFavorites = getFavorites();
+    const currentFavorites = getFavorites;
 
     const [ user, setUserUpdate ] = useState({
                                 userName: currentUser,
-                                favorites: currentFavorites,
+                                favorites: currentFavorites(),
+                                menuShow: false,
                             })
 
 
@@ -25,20 +26,6 @@ const Header = () => {
                     currentFavorites={currentFavorites}
                     user={user}
                 />
-                {/* <button
-                    className="header-nav-item"
-                    onClick={() => setUserUpdate({
-                        userName: currentUser,
-                        favorites: currentFavorites,
-                    })}
-                    >{user.userName}
-                </button>
-                {user.favorites.length > 0
-                    ? <Link className="header-nav-item" to={'/favorites'}>
-                        <span><i className="fas fa-star"> Favoritos</i></span>
-                    </Link>
-                    : ''
-                } */}
             </nav>
         </header>
     );
