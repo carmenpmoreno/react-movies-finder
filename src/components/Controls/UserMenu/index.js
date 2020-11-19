@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
+import {handleUserMenuButton} from './helpers';
 
 const UserMenu = ( {
     setUserUpdate, 
@@ -10,28 +11,18 @@ const UserMenu = ( {
     }) => {
 
     return (
-        <div className="profile-menu-wrapper">
+        <div className="profile-menu-wrapper"
+        >
             <button
                 className="profile-menu-button"
-                onClick={() => {
-                    user.menuShow 
-                    ? setUserUpdate({
-                        userName: currentUser,
-                        favorites: currentFavorites(),
-                        menuShow: false
-                    })
-                    : setUserUpdate({
-                        userName: currentUser,
-                        favorites: currentFavorites(),
-                        menuShow: true
-                    })
-                }
-                    
-                }
+                onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
                 ><i className="fas fa-user-cog"></i>Menú usuario
             </button>
             {user.menuShow
-                ? <div id="profile-menu">
+                ? <div 
+                    id="profile-menu"
+                    onMouseLeave={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                    >
                         <ul 
                             className="profile-menu-user-name-container"
                             >
@@ -41,16 +32,24 @@ const UserMenu = ( {
                         <ul>
                             <li>
                                 {user.favorites.length > 0
-                                ? <Link className="header-nav-item" to={'/favorites'}>
-                                    <span><i className="fas fa-star"> Favoritos</i></span>
-                                </Link>
+                                ? <>
+                                    <li 
+                                        onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                                        >
+                                        <Link className="header-nav-item" to={'/favorites'}>
+                                        <span><i className="fas fa-star"> Favoritos</i></span>
+                                        </Link>
+                                    </li>
+                                    <li
+                                        onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                                        >
+                                        <Link className="header-nav-item" to={'/'}>
+                                            Movies Finder
+                                        </Link>
+                                    </li>
+                                </>
                                 : ''
                                 }                    
-                            </li>
-                            <li>
-                                <Link className="header-nav-item" to={'/'}>
-                                    Movies Finder
-                                </Link>
                             </li>
                             <li>
                                 <button
