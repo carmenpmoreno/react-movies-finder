@@ -26,6 +26,12 @@ export default (state =  INITIAL_STATE, action) => {
                 ...state,
                 userUnauthorized: action.userUnauthorized,
             }
+        case LOGIN_ACTIONS.USER_LOGOUT:
+            return {
+                user: action.user,
+                isLoadingUser: action.isLoadingUser,
+                userUnauthorized: action.userUnauthorized
+            }
 
         default:
             return state

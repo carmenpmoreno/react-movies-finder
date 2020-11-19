@@ -1,13 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './index.css';
-import {handleUserMenuButton} from './helpers';
+import { handleUserMenuButton } from './helpers';
+import { userLogout } from '../../LoginPage/actions';
 
 const UserMenu = ( {
     setUserUpdate, 
     currentUser, 
     currentFavorites,
     user,
+    onUserLogout
     }) => {
 
     return (
@@ -30,30 +33,28 @@ const UserMenu = ( {
                             <li>{user.userName}</li>
                         </ul>    
                         <ul>
-                            <li>
-                                {user.favorites.length > 0
-                                ? <>
-                                    <li 
-                                        onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
-                                        >
-                                        <Link className="header-nav-item" to={'/favorites'}>
-                                        <span><i className="fas fa-star"> Favoritos</i></span>
-                                        </Link>
-                                    </li>
-                                    <li
-                                        onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
-                                        >
-                                        <Link className="header-nav-item" to={'/'}>
-                                            Movies Finder
-                                        </Link>
-                                    </li>
+                            {user.favorites.length > 0
+                            ? <>
+                                <li 
+                                    onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                                    >
+                                    <Link className="header-nav-item" to={'/favorites'}>
+                                    <span><i className="fas fa-star"> Favoritos</i></span>
+                                    </Link>
+                                </li>
+                                <li
+                                    onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                                    >
+                                    <Link className="header-nav-item" to={'/'}>
+                                        Movies Finder
+                                    </Link>
+                                </li>
                                 </>
                                 : ''
-                                }                    
-                            </li>
+                            }                    
                             <li>
                                 <button
-                                    // onClick={onSignoutHandler}
+                                    onClick={() => onUserLogout()}
                                     className="logout-button"
                                 ><i className="fa fa-sign-out-alt"></i> Salir
                                 </button>
@@ -66,4 +67,13 @@ const UserMenu = ( {
     );
 };
 
-export default UserMenu;
+const mapStateToProps = (state) => {
+
+    return state
+}
+
+const mapDispatchToProps = dispatch => ({
+    onUserLogout: () => dispatch(userLogout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

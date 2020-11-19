@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {getFavorites} from '../helpers';
 import UserMenu from '../Controls/UserMenu'
@@ -12,6 +12,15 @@ const Header = () => {
                                 favorites: currentFavorites(),
                                 menuShow: false,
                             })
+
+    useEffect(() => {
+        // Actualiza el título del documento usando la API del navegador
+        document.title = `${user.userName} Movies Finder profile`;
+        
+        return function cleanUp() {
+            document.title = 'Movies Finder';
+        }
+    });
 
 
     return (

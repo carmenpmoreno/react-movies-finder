@@ -1,4 +1,5 @@
-import { LOGIN_ACTIONS } from './constants'
+import { LOGIN_ACTIONS } from './constants';
+import { push } from 'connected-react-router';
 
 export const getUserName = (userName) => ({
     type: LOGIN_ACTIONS.GET_USER_NAME,
@@ -34,5 +35,21 @@ export const setUserName = () => {
 
            
         
+    }
+}
+
+export const userLogout = () => {
+
+    sessionStorage.setItem('userName', '')
+
+    return (dispatch) => {      
+
+        dispatch({
+            type: LOGIN_ACTIONS.USER_LOGOUT,
+            user: '',
+            isLoadingUser: false,
+            userUnauthorized: false
+        })
+        dispatch(push('/'))            
     }
 }
