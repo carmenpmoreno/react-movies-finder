@@ -38,7 +38,7 @@ export const setUserName = () => {
     }
 }
 
-export const userLogout = () => {
+export const userLogout =  () => {
 
     sessionStorage.setItem('userName', '')
 

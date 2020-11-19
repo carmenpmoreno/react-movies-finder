@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './index.css';
-import { handleUserMenuButton } from './helpers';
+import { handleUserMenuButton, handleUserLogoutButton } from './helpers';
 import { userLogout } from '../../LoginPage/actions';
 
 const UserMenu = ( {
@@ -54,7 +54,10 @@ const UserMenu = ( {
                             }                    
                             <li>
                                 <button
-                                    onClick={() => onUserLogout()}
+                                    onClick={() => {
+                                        onUserLogout()
+                                        handleUserLogoutButton(setUserUpdate, currentFavorites)
+                                    }}
                                     className="logout-button"
                                 ><i className="fa fa-sign-out-alt"></i> Salir
                                 </button>

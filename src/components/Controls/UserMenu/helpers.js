@@ -15,3 +15,13 @@ export const handleUserMenuButton = (user, setUserUpdate, currentUser, currentFa
     }
 
 }
+
+export const handleUserLogoutButton = ( setUserUpdate, currentFavorites ) => {
+
+    setUserUpdate({
+        userName: '',
+        favorites: currentFavorites(),
+        menuShow: false
+    })
+    
+}
