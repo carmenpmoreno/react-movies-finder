@@ -10,7 +10,7 @@ class LoginPage extends Component {
     }
 
     render() {
-        const { onUserNameChange, onUserLogin } = this.props
+        const { onUserNameChange, onUserLogin, userUnauthorized } = this.props
 
         return (
             <div className="container-fluid login-container">
@@ -32,6 +32,11 @@ class LoginPage extends Component {
                             placeholder="Ej: Movie friki" 
                             onChange={(e) => onUserNameChange(e.target.value)}
                         ></input>
+                        {userUnauthorized === true 
+                        ? <p>usuario no autorizado</p>
+                        :''
+                        }
+                        {}
                         <button
                             onClick={onUserLogin}
                             className="login-card-button btn"
@@ -61,6 +66,7 @@ const mapStateToProps = (state) => {
 
     return {
         user: current.user,
+        userUnauthorized: current.userUnauthorized
     }
 }
 

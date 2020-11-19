@@ -11,14 +11,28 @@ export const setUserName = () => {
         
         const state = getState().LoginReducer,
             userName = state.user;
+            // mock login
+            fetch('./data/users.json')
+            .then( response => response.json() )
+            .then( users => {
+                const userNameAuthorized =  users.find( user => user.name === userName ) 
 
-            if(userName !== '') {
-                sessionStorage.setItem('userName', userName)
-                dispatch({
-                    type: LOGIN_ACTIONS.SET_USER_NAME,
-                    isLoadingUser: false,
-                    })
-            }
+                if (userNameAuthorized !== undefined ) {
+                    sessionStorage.setItem('userName', userName)
+                    dispatch({
+                        type: LOGIN_ACTIONS.SET_USER_NAME,
+                        isLoadingUser: false,
+                        })
+                } else {
+                    dispatch({
+                        type: LOGIN_ACTIONS.SET_USER_NAME_ERROR,
+                        userUnauthorized: true,
+                        })
+                }
+
+            } )
+
+           
         
     }
 }

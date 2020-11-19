@@ -1,5 +1,6 @@
 # Introduction 
 Movies finder with film detail. Includes a favourites pages. A responsive web and a React and Redux project.
+To login, user name: usuario general
 
 # Getting Started
 1.	Installation process
@@ -15,3 +16,6 @@ Movies finder with film detail. Includes a favourites pages. A responsive web an
     - node-sass v.4.14.1
 3.	Build
     - yarn build
+
+# Latest updates
+- Mock users.json and feedback message on login page if user not exist 
