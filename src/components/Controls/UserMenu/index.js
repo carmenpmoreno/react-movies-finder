@@ -11,20 +11,20 @@ const UserMenu = ( {
     }) => {
 
     return (
-        <div className="profile-menu-wrapper"
+        <div className="user-menu-wrapper"
         >
             <button
-                className="profile-menu-button"
+                className="user-menu-button"
                 onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
                 ><i className="fas fa-user-cog"></i>Menú usuario
             </button>
             {user.menuShow
                 ? <div 
-                    id="profile-menu"
+                    id="user-menu"
                     onMouseLeave={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
                     >
                         <ul 
-                            className="profile-menu-user-name-container"
+                            className="user-menu-user-name-container"
                             >
                             <li><i className="fas fa-user-circle"></i></li>
                             <li>{user.userName}</li>
