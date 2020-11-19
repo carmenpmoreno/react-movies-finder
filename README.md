@@ -1,7 +1,6 @@
 # Introduction 
 Movies finder with film detail. Includes a favourites pages. A responsive web and a React and Redux project.
-To login:
-    user name: usuario general
+To login, user name: usuario general
 
 # Getting Started
 1.	Installation process
