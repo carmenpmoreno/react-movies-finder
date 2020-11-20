@@ -15,7 +15,7 @@ const FavoritesPage = () => {
               {movies.length > 0
               ? <MoviesList
                   movies={movies}  
-                  favoriteInfo={false}
+                  opinionInfo={true}
                 />
               : <p className="page-movies-list-message">Aún no ha seleccionado ninguna película o serie</p> }
             </ul>

@@ -1,4 +1,3 @@
-
 export const setFavorite = ( movie ) => {
 
     let freshFavorites = [ movie ],
