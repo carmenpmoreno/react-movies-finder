@@ -10,6 +10,8 @@ const FavoritesPage = () => {
     const [opinionUpdate, setOpinionUpdate] = useState(false);
 
     const storeFavoriteOpinion = (value, movie) => {
+
+      setOpinionUpdate(false)
         
       const favoritesFromLs = getFavorites()
       let freshFavorites = [];
