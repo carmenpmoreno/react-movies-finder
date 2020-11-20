@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DetailPage = ( { movies, params } ) => {
+const DetailPage = ( { params } ) => {
 
-    if( movies === undefined ) {
-        movies = JSON.parse(sessionStorage.getItem('movies'))
-    }
+    const favoriteMovies = JSON.parse(localStorage.getItem('favorites'))
+    const searchMovies = JSON.parse(sessionStorage.getItem('movies'))
     
-    const movieId = params.detailId,
-        movie = movies.find( movie => movie.imdbID === movieId );
+    const movieId = params.detailId
+    let movie = favoriteMovies.find( favoriteMovie => favoriteMovie.imdbID === movieId );
+
+    if( movie === undefined ) {
+        movie = searchMovies.find( searchMovie => searchMovie.imdbID === movieId );
+    }
 
     
     return (

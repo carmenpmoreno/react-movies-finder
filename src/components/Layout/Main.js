@@ -20,7 +20,6 @@ const Main = ( {movies} ) => {
                     render={routerProps =>
                         <DetailPage
                         params={routerProps.match.params}
-                        movies={movies}
                         />
                     }
                 />
