@@ -17,7 +17,7 @@ const Header = () => {
     return (
         <header className="header-container">
             <nav className="header-nav-container">
-                <Link className="header-nav-item" to={'/'}>
+                <Link className="header-nav-item" to={'/home'}>
                     <i className="fas fa-film"></i> Movies Finder
                 </Link>
                 <UserMenu 

@@ -24,6 +24,8 @@ export const setUserName = () => {
                         type: LOGIN_ACTIONS.SET_USER_NAME_SUCESS,
                         isLoadingUser: false,
                         })
+                    dispatch(push('/home'))            
+
                 } else {
                     dispatch({
                         type: LOGIN_ACTIONS.SET_USER_NAME_ERROR,
@@ -50,6 +52,6 @@ export const userLogout =  () => {
             isLoadingUser: false,
             userUnauthorized: false
         })
-        dispatch(push('/'))            
+        dispatch(push('/logout'))            
     }
 }

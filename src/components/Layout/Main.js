@@ -6,13 +6,18 @@ import PropTypes from 'prop-types';
 import HomePage from '../HomePage'
 import DetailPage from '../DetailPage'
 import FavoritesPage from '../FavoritesPage'
+import LogoutPage from '../LogoutPage';
 
 const Main = ( {movies} ) => {
     return (
         <main>
             <Switch>
                 <Route 
-                    exact path='/'
+                    exact path='/logout'
+                    component={LogoutPage} 
+                />
+                <Route 
+                    path='/home'
                     component={HomePage} 
                 />
                 <Route

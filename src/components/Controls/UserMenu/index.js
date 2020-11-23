@@ -44,7 +44,7 @@ const UserMenu = ( {
                                 <li
                                     onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
                                     >
-                                    <Link className="header-nav-item" to={'/'}>
+                                    <Link className="header-nav-item" to={'/home'}>
                                         Movies Finder
                                     </Link>
                                 </li>

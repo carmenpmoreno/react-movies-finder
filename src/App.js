@@ -2,12 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Layout from './components/Layout/index';
 import LoginPage from './components/LoginPage';
+import { Switch, Route } from 'react-router';
+
 import './styles/moviesFinder.scss';
 
 const App = ({ isLoadingUser }) => {
 
   return isLoadingUser
-    ? <LoginPage/> 
+    ? <>
+    <Switch>
+        <Route 
+            exact path='/'
+            component={LoginPage} 
+        />
+      </Switch>
+    </>
     : <Layout/>
 
 }
