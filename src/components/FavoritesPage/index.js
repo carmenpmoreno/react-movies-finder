@@ -16,7 +16,6 @@ const FavoritesPage = () => {
       movie = {
           ...movie,
           opinion: value,
-          opinionUpdate: true
       }
 
       freshFavorites = favoritesFromLs.filter( favorite => favorite.imdbID !== movie.imdbID )

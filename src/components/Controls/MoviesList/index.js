@@ -36,7 +36,7 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                         : ''
                         }
                         
-                        {opinionOptions === true && movie.opinionUpdate === undefined && movie.opinion === undefined
+                        {opinionOptions === true && movie.opinion === undefined
                         ? <>
                             <input 
                                 placeholder="Escribe aquí tu opinión" 
@@ -49,8 +49,8 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                         </>
                         : ''
                         }
-                        {opinionOptions === true && movie.opinionUpdate === true
-                        ? <p>{movie.opinion}</p>
+                        {opinionOptions === true && movie.opinion !== undefined
+                        ? <p>Mis opinión: {movie.opinion}</p>
                         : ''
                         }
                         <button
