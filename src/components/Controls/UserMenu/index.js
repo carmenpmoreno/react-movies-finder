@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './index.css';
 import { handleUserMenuButton, handleUserLogoutButton } from './helpers';
 import { userLogout } from '../../LoginPage/actions';
 
