@@ -11,15 +11,17 @@ const FavoritesPage = () => {
     const storeFavoriteOpinion = (value, movie) => {
         
       const favoritesFromLs = getFavorites()
-      let freshFavorites = [];
+      let freshFavorites = [],
+        favoriteMovieIndex = '';
 
       movie = {
           ...movie,
           opinion: value,
       }
-
-      freshFavorites = favoritesFromLs.filter( favorite => favorite.imdbID !== movie.imdbID )
-      freshFavorites.push(movie)
+      favoriteMovieIndex = favoritesFromLs.findIndex( favorite => favorite.imdbID === movie.imdbID )
+      favoritesFromLs[favoriteMovieIndex] = movie
+      freshFavorites = favoritesFromLs
+      
       localStorage.setItem( 'favorites', JSON.stringify(freshFavorites) )
 
       setOpinionUpdate(true)

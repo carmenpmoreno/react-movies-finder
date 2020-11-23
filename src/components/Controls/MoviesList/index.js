@@ -2,11 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setFavorite } from '../../helpers';
-import { UseInput } from '../../customHooks';
+import { useInput } from '../../customHooks';
 
 const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOptions } ) => {
 
-    const { value, handleOnChange } = UseInput("");
+    const { value, handleOnChange } = useInput("");
 
     return (
         <>
