@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { setFavorite } from '../../helpers';
 import { UseInput } from '../../customHooks';
 
-const MoviesList = ( { movies, favoriteInfo, opinionInfo, storeFavoriteOpinion } ) => {
+const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOptions } ) => {
 
     const { value, handleOnChange } = UseInput("");
 
@@ -35,7 +35,8 @@ const MoviesList = ( { movies, favoriteInfo, opinionInfo, storeFavoriteOpinion }
                         </>
                         : ''
                         }
-                        {opinionInfo === true && !movie.opinion
+                        
+                        {opinionOptions === true && movie.opinionUpdate === undefined && movie.opinion === undefined
                         ? <>
                             <input 
                                 placeholder="Escribe aquí tu opinión" 
@@ -48,10 +49,8 @@ const MoviesList = ( { movies, favoriteInfo, opinionInfo, storeFavoriteOpinion }
                         </>
                         : ''
                         }
-                        {movie.opinion
-                        ? <>
-                            <p>{movie.opinion}</p>
-                        </>
+                        {opinionOptions === true && movie.opinionUpdate === true
+                        ? <p>{movie.opinion}</p>
                         : ''
                         }
                         <button

@@ -6,28 +6,29 @@ import { getFavorites } from '../helpers';
 const FavoritesPage = () => {
 
     const movies = getFavorites();
-
     const [opinionUpdate, setOpinionUpdate] = useState(false);
 
     const storeFavoriteOpinion = (value, movie) => {
-
-      setOpinionUpdate(false)
         
       const favoritesFromLs = getFavorites()
       let freshFavorites = [];
 
       movie = {
           ...movie,
-          opinion: value
+          opinion: value,
+          opinionUpdate: true
       }
 
       freshFavorites = favoritesFromLs.filter( favorite => favorite.imdbID !== movie.imdbID )
       freshFavorites.push(movie)
-
       localStorage.setItem( 'favorites', JSON.stringify(freshFavorites) )
 
       setOpinionUpdate(true)
-  }
+    }
+
+    if(opinionUpdate === true) {
+      setOpinionUpdate(false)
+    }
 
     return (
         <section className="page-container">
@@ -37,8 +38,8 @@ const FavoritesPage = () => {
               {movies.length > 0
               ? <MoviesList
                   movies={movies}  
-                  opinionInfo={true}
                   storeFavoriteOpinion={storeFavoriteOpinion}
+                  opinionOptions={true}
                 />
               : <p className="page-movies-list-message">Aún no ha seleccionado ninguna película o serie</p> }
             </ul>
