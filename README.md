@@ -1,5 +1,5 @@
 # Introduction 
-Movies finder with film detail. Includes a favourites pages. A responsive web and a React and Redux project.
+Movies finder with a favorites page to store your favorite films. Includes a user menu and option to storage your opinion about the favorites page films. A responsive web and a React and Redux project.
 
 To login, enter the user "usuario general"
 

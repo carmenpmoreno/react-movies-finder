@@ -37,7 +37,7 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                             className="btn btn-light page-movie-button"
                             >
                                 <Link to={`/detail/${movie.imdbID}`}>
-                                    Saber más
+                                    Más información
                                 </Link>
                             </button>
                         </div>
@@ -49,7 +49,7 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                                 className="page-card-input"
                                 placeholder="Escribe aquí tu opinión" 
                                 onChange={handleOnChange}
-                                maxLength="20"
+                                maxLength="54"
                             />
                             <div className="page-movie-card-footer-buttons-wrapper">
                                 <button
@@ -64,7 +64,7 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                                 className="btn btn-light page-movie-button"
                                 >
                                     <Link to={`/detail/${movie.imdbID}`}>
-                                        Saber más
+                                        Más información
                                     </Link>
                                 </button>
                             </div>
@@ -81,7 +81,7 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                                 className="btn btn-light page-movie-button"
                                 >
                                     <Link to={`/detail/${movie.imdbID}`}>
-                                        Saber más
+                                        Más información
                                     </Link>
                                 </button>
                             </div>
