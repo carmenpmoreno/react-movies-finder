@@ -21,7 +21,7 @@ export const setUserName = () => {
                 if (userNameAuthorized !== undefined ) {
                     sessionStorage.setItem('userName', currentuserName)
                     dispatch({
-                        type: LOGIN_ACTIONS.SET_USER_NAME,
+                        type: LOGIN_ACTIONS.SET_USER_NAME_SUCESS,
                         isLoadingUser: false,
                         })
                 } else {

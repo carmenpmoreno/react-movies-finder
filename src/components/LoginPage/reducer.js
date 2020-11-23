@@ -16,7 +16,7 @@ export default (state =  INITIAL_STATE, action) => {
                 userUnauthorized: false                
             }
 
-        case LOGIN_ACTIONS.SET_USER_NAME:
+        case LOGIN_ACTIONS.SET_USER_NAME_SUCESS:
             return {
                 ...state,
                 isLoadingUser: action.isLoadingUser,
