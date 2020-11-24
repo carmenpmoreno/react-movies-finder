@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getFavorites} from '../helpers';
 import UserMenu from '../Controls/UserMenu'
 
 const Header = () => {
-    const currentUser = sessionStorage.getItem('userName');
-    const currentFavorites = getFavorites;
-
-    const [ user, setUserUpdate ] = useState({
-                                userName: currentUser,
-                                favorites: currentFavorites(),
-                                menuShow: false,
-                            });
-
+    const currentFavorites = getFavorites,
+        [ userOptions, setUserUpdate ] = useState({
+                                        favorites: currentFavorites(),
+                                        menuShow: false,
+                                    }),
+        userName = useSelector(state => state.LoginReducer.user);
 
     return (
         <header className="header-container">
@@ -22,9 +20,9 @@ const Header = () => {
                 </Link>
                 <UserMenu 
                     setUserUpdate={setUserUpdate}
-                    currentUser={currentUser}
                     currentFavorites={currentFavorites}
-                    user={user}
+                    userOptions={userOptions}
+                    userName={userName}
                 />
             </nav>
         </header>

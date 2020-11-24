@@ -1,27 +1,15 @@
-export const handleUserMenuButton = (user, setUserUpdate, currentUser, currentFavorites) => {
+export const handleUserMenuButton = (userOptions, setUserUpdate, currentFavorites) => {
 
-    if(user.menuShow) {
+    if(userOptions.menuShow) {
         setUserUpdate({
-            userName: currentUser,
             favorites: currentFavorites(),
             menuShow: false
         })
     } else {
         setUserUpdate({
-            userName: currentUser,
             favorites: currentFavorites(),
             menuShow: true
         })
     }
 
-}
-
-export const handleUserLogoutButton = ( setUserUpdate, currentFavorites ) => {
-
-    setUserUpdate({
-        userName: '',
-        favorites: currentFavorites(),
-        menuShow: false
-    })
-    
 }

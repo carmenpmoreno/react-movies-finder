@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { handleUserMenuButton, handleUserLogoutButton } from './helpers';
+import { handleUserMenuButton } from './helpers';
 import { userLogout } from '../../LoginPage/actions';
 
 const UserMenu = ( {
     setUserUpdate, 
-    currentUser, 
     currentFavorites,
-    user,
+    userOptions,
+    userName,
     onUserLogout
     }) => {
 
@@ -17,32 +17,32 @@ const UserMenu = ( {
         >
             <button
                 className="user-menu-button"
-                onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                onClick={() => handleUserMenuButton(userOptions, setUserUpdate, currentFavorites)}
                 ><i className="fas fa-user-cog"></i>Menú usuario
             </button>
-            {user.menuShow
+            {userOptions.menuShow
                 ? <div 
                     id="user-menu"
-                    onMouseLeave={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                    onMouseLeave={() => handleUserMenuButton(userOptions, setUserUpdate, currentFavorites)}
                     >
                         <ul 
                             className="user-menu-user-name-container"
                             >
                             <li><i className="fas fa-user-circle"></i></li>
-                            <li>{user.userName}</li>
+                            <li>{userName}</li>
                         </ul>    
                         <ul>
-                            {user.favorites.length > 0
+                            {userOptions.favorites.length > 0
                             ? <>
                                 <li 
-                                    onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                                    onClick={() => handleUserMenuButton(userOptions, setUserUpdate, currentFavorites)}
                                     >
                                     <Link className="header-nav-item" to={'/favorites'}>
                                     <span><i className="fas fa-star"> Favoritos</i></span>
                                     </Link>
                                 </li>
                                 <li
-                                    onClick={() => handleUserMenuButton(user, setUserUpdate, currentUser, currentFavorites)}
+                                    onClick={() => handleUserMenuButton(userOptions, setUserUpdate, currentFavorites)}
                                     >
                                     <Link className="header-nav-item" to={'/home'}>
                                         Movies Finder
@@ -55,7 +55,6 @@ const UserMenu = ( {
                                 <button
                                     onClick={() => {
                                         onUserLogout()
-                                        handleUserLogoutButton(setUserUpdate, currentFavorites)
                                     }}
                                     className="logout-button"
                                 ><i className="fa fa-sign-out-alt"></i> Salir
