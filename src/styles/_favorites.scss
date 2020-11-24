@@ -2,3 +2,14 @@
     text-align: center;
     padding: 75px;
 }
+
+.favorite-movie-card-footer {   
+    height: 132px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.favorite-movie-card-footer-opinion-title {
+    margin-bottom: 0;
+}

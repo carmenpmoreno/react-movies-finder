@@ -16,7 +16,7 @@ export default (state =  INITIAL_STATE, action) => {
                 userUnauthorized: false                
             }
 
-        case LOGIN_ACTIONS.SET_USER_NAME:
+        case LOGIN_ACTIONS.SET_USER_NAME_SUCESS:
             return {
                 ...state,
                 isLoadingUser: action.isLoadingUser,
@@ -25,6 +25,12 @@ export default (state =  INITIAL_STATE, action) => {
             return {
                 ...state,
                 userUnauthorized: action.userUnauthorized,
+            }
+        case LOGIN_ACTIONS.USER_LOGOUT:
+            return {
+                user: action.user,
+                isLoadingUser: action.isLoadingUser,
+                userUnauthorized: action.userUnauthorized
             }
 
         default:
