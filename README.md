@@ -1,7 +1,11 @@
 # Introduction 
-Movies finder with a favorites page to store your favorite films. Includes a user menu and option to storage your opinion about the favorites page films. A responsive web and a React and Redux project.
+Movie finder with a favorites page to store your favorite movies. It includes a user menu and an option to store your opinion about the movies from the favorites page. A responsive website and a React and Redux project.
 
-To login, enter the user "usuario general"
+It includes a mock login system that stores the username in sessionStorage. To log in, enter the user "general user".
+
+As a database I use the REST API http://www.omdbapi.com.
+To store favorite movies I use the browser's localStorage.
+
 
 # Getting Started
 1.	Installation process
