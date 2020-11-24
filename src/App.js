@@ -30,7 +30,7 @@ const App = () => {
 
     if ( isLoadingUser === true && checkUserLoaded === true ) {
 
-        //to refresh page and store when user refresh webApp
+        //to refresh page and store when loaded user refresh webApp
         if( pathLocationName === '/') {
           dispatch(push('/home'))
         } else {
