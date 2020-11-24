@@ -5,30 +5,25 @@ import { getFavorites } from '../helpers';
 
 const FavoritesPage = () => {
 
-    const movies = getFavorites();
-    const [opinionUpdate, setOpinionUpdate] = useState(false);
+    const movies = getFavorites(),
+        [opinion, setOpinionUpdate] = useState('');
 
     const storeFavoriteOpinion = (value, movie) => {
+        const favoritesFromLs = getFavorites()
+        let freshFavorites = [],
+          favoriteMovieIndex = '';
+
+        movie = {
+            ...movie,
+            opinion: value,
+        }
+        favoriteMovieIndex = favoritesFromLs.findIndex( favorite => favorite.imdbID === movie.imdbID )
+        favoritesFromLs[favoriteMovieIndex] = movie
+        freshFavorites = favoritesFromLs
         
-      const favoritesFromLs = getFavorites()
-      let freshFavorites = [],
-        favoriteMovieIndex = '';
+        localStorage.setItem( 'favorites', JSON.stringify(freshFavorites) )
 
-      movie = {
-          ...movie,
-          opinion: value,
-      }
-      favoriteMovieIndex = favoritesFromLs.findIndex( favorite => favorite.imdbID === movie.imdbID )
-      favoritesFromLs[favoriteMovieIndex] = movie
-      freshFavorites = favoritesFromLs
-      
-      localStorage.setItem( 'favorites', JSON.stringify(freshFavorites) )
-
-      setOpinionUpdate(true)
-    }
-
-    if(opinionUpdate === true) {
-      setOpinionUpdate(false)
+        setOpinionUpdate(value)
     }
 
     return (
