@@ -6,7 +6,9 @@ import { getFavorites } from '../helpers';
 const FavoritesPage = () => {
 
     const movies = getFavorites(),
-        [opinion, setOpinionUpdate] = useState('');
+        [opinion, setOpinionUpdate] = useState(''),
+        [opinionStoredMessage, setopinionStoredMessage] = useState('');
+
 
     const storeFavoriteOpinion = (value, movie) => {
         const favoritesFromLs = getFavorites()
@@ -36,6 +38,9 @@ const FavoritesPage = () => {
                   movies={movies}  
                   storeFavoriteOpinion={storeFavoriteOpinion}
                   opinionOptions={true}
+                  opinion={opinion}
+                  opinionStoredMessage={opinionStoredMessage}
+                  setopinionStoredMessage={setopinionStoredMessage}
                 />
               : <p className="page-movies-list-message">Aún no ha seleccionado ninguna película o serie</p> }
             </ul>

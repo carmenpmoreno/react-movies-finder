@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setFavorite } from '../../helpers';
 import { useInput } from '../../customHooks';
 
-const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOptions } ) => {
+const MoviesList = ( {
+    movies, 
+    favoriteInfo, 
+    storeFavoriteOpinion, 
+    opinionOptions, 
+    opinion,
+    opinionStoredMessage,
+    setopinionStoredMessage } ) => {
 
     const { value, handleOnChange } = useInput("");
+
+
+    useEffect(() => {
+        if( opinion !== undefined && opinion.length > 0 ) {
+            setopinionStoredMessage('¡Guardada con éxito!')
+        }
+
+    }, [setopinionStoredMessage, opinion]);
 
     return (
         <>
@@ -48,7 +63,10 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                             <input 
                                 className="page-card-input"
                                 placeholder="Escribe aquí tu opinión" 
-                                onChange={handleOnChange}
+                                onChange={(e) => {
+                                    handleOnChange(e)
+                                    setopinionStoredMessage('')
+                                }}
                                 maxLength="54"
                             />
                             <div className="page-movie-card-footer-buttons-wrapper">
@@ -87,12 +105,13 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                             </div>
                         </div>
                         : ''
-                        }
+                        }                        
                         
                     </div>
                     
                 </li>)
             }
+                        <p>{opinionStoredMessage}</p>
 
         </>
     );
