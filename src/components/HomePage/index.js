@@ -115,6 +115,8 @@ const HomePage = (props) => {
                 storeFavorite={storeFavorite}
                 favorite={favorite}
                 favoriteStoredMessage={favoriteStoredMessage}
+                setFavoriteStoredMessage={setFavoriteStoredMessage}
+                setFavorite={setFavorite}
               />
             : '' }
 

@@ -7,6 +7,9 @@ const MoviesList = ( {
     movies,
     storeFavorite,
     favorite,
+    favoriteStoredMessage,
+    setFavoriteStoredMessage,
+    setFavorite,
     storeFavoriteOpinion, 
     opinionOptions, 
     setopinionStoredMessage,
@@ -37,6 +40,10 @@ const MoviesList = ( {
                                 type="button"
                                 className="btn btn-light page-movie-button"
                                 onClick={ () => {
+                                    if(favorite !== undefined && favorite === true ) {
+                                        setFavorite(false)
+                                        // setFavoriteStoredMessage('')
+                                    }
                                     storeFavorite(movie)
                                 }}
                                 ><i className="fas fa-star">Añadir</i>
