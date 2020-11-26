@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MoviesList from '../Controls/MoviesList'
 import { getFavorites } from '../helpers';
 
@@ -28,6 +28,13 @@ const FavoritesPage = () => {
         setOpinionUpdate(value)
     }
 
+    useEffect(() => {
+        if( opinion !== undefined && opinion.length > 0 ) {
+            setopinionStoredMessage('¡Guardada con éxito!')
+        }
+
+    }, [opinion]);
+
     return (
         <section className="page-container">
           <h2 className="favorites-page-title">Mis favoritos</h2>
@@ -38,7 +45,6 @@ const FavoritesPage = () => {
                   movies={movies}  
                   storeFavoriteOpinion={storeFavoriteOpinion}
                   opinionOptions={true}
-                  opinion={opinion}
                   opinionStoredMessage={opinionStoredMessage}
                   setopinionStoredMessage={setopinionStoredMessage}
                 />

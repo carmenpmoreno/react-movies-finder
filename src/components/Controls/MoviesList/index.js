@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setFavorite } from '../../helpers';
@@ -9,19 +9,10 @@ const MoviesList = ( {
     favoriteInfo, 
     storeFavoriteOpinion, 
     opinionOptions, 
-    opinion,
     opinionStoredMessage,
     setopinionStoredMessage } ) => {
 
     const { value, handleOnChange } = useInput("");
-
-
-    useEffect(() => {
-        if( opinion !== undefined && opinion.length > 0 ) {
-            setopinionStoredMessage('¡Guardada con éxito!')
-        }
-
-    }, [setopinionStoredMessage, opinion]);
 
     return (
         <>
