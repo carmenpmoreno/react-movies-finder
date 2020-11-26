@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { setFavorite } from '../../helpers';
+import { setFavorite } from '../../transversal';
 import { useInput } from '../../customHooks';
 
 const MoviesList = ( {
@@ -9,8 +9,9 @@ const MoviesList = ( {
     favoriteInfo, 
     storeFavoriteOpinion, 
     opinionOptions, 
-    opinionStoredMessage,
-    setopinionStoredMessage } ) => {
+    setopinionStoredMessage,
+    opinionStoredMessage
+ } ) => {
 
     const { value, handleOnChange } = useInput("");
 
@@ -102,8 +103,6 @@ const MoviesList = ( {
                     
                 </li>)
             }
-                        <p>{opinionStoredMessage}</p>
-
         </>
     );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {getFavorites} from '../helpers';
+import {getFavorites} from '../transversal';
 import UserMenu from '../Controls/UserMenu'
 
 const Header = () => {

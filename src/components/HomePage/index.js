@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
+import { getHideToast } from '../Controls/Toast/actions';
 
 import MoviesList from '../Controls/MoviesList';
-import { closeFavoriteModal } from '../helpers';
+import { closeFavoriteModal } from '../transversal';
 
 export  const detectSafariBrowser = () => {
   var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari']);
@@ -13,15 +15,21 @@ export  const detectSafariBrowser = () => {
 
 const HomePage = (props) => {
 
-  const {
-    onInputChange,
-    onSearchButtonClick,
-    inputToSearch,
-    movies,
-    error,
-    errorMessage,
-    remoteError,
-   } = props
+    const {
+      onInputChange,
+      onSearchButtonClick,
+      inputToSearch,
+      movies,
+      error,
+      errorMessage,
+      remoteError,
+    } = props
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch( getHideToast() )
+    }, [dispatch]);
 
     return (
       <section className="page-container">
