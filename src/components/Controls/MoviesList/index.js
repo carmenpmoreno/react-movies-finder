@@ -56,7 +56,9 @@ const MoviesList = ( {
                                 className="page-card-input"
                                 placeholder="Escribe aquí tu opinión" 
                                 onChange={(e) => {
-                                    setopinionStoredMessage('')
+                                    if(opinionStoredMessage!== undefined && opinionStoredMessage.length > 0) {
+                                        setopinionStoredMessage('')
+                                    }
                                     return handleOnChange(e)
                                 }}
                                 maxLength="54"
