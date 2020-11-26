@@ -27,7 +27,6 @@ const FavoritesPage = () => {
 
     useEffect(() => {
         if( opinionStoredMessage.length === 0 ) {
-            setopinionStoredMessage('')
             dispatch( getHideToast() )
         }
     }, [opinionStoredMessage, dispatch]);

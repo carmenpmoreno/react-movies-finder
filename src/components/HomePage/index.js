@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
@@ -23,13 +22,12 @@ const HomePage = (props) => {
       error,
       errorMessage,
       remoteError,
+      cleanToast
     } = props
 
-    const dispatch = useDispatch();
-
     useEffect(() => {
-        dispatch( getHideToast() )
-    }, [dispatch]);
+      cleanToast()
+    }, [cleanToast]);
 
     return (
       <section className="page-container">
@@ -136,6 +134,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onInputChange: (value) => dispatch(actions.getInputToSearch(value)),
   onSearchButtonClick: (e) => dispatch(actions.searchHandler(e)),
+  cleanToast: () => dispatch( getHideToast())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
