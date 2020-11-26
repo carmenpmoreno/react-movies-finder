@@ -56,8 +56,8 @@ const MoviesList = ( {
                                 className="page-card-input"
                                 placeholder="Escribe aquí tu opinión" 
                                 onChange={(e) => {
-                                    handleOnChange(e)
                                     setopinionStoredMessage('')
+                                    return handleOnChange(e)
                                 }}
                                 maxLength="54"
                             />

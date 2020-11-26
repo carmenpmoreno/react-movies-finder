@@ -21,13 +21,14 @@ const FavoritesPage = () => {
     useEffect(() => {
         if( opinion !== undefined && opinion.length > 0 ) {
             setopinionStoredMessage('¡Guardada con éxito!')
-            dispatch( getShowToast(TOAST_TYPES.SUCCESS, opinionStoredMessage) )
         }
-    }, [opinion, opinionStoredMessage, dispatch]);
+    }, [opinion, dispatch]);
 
     useEffect(() => {
         if( opinionStoredMessage.length === 0 ) {
             dispatch( getHideToast() )
+        } else {
+          dispatch( getShowToast(TOAST_TYPES.SUCCESS, opinionStoredMessage) )
         }
     }, [opinionStoredMessage, dispatch]);
 
