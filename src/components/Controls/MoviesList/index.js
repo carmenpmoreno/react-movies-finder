@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { setFavorite } from '../../transversal';
 import { useInput } from '../../customHooks';
 
 const MoviesList = ( {
-    movies, 
-    favoriteInfo, 
+    movies,
+    storeFavorite,
+    favorite,
     storeFavoriteOpinion, 
     opinionOptions, 
     setopinionStoredMessage,
-    opinionStoredMessage
+    opinionStoredMessage,
  } ) => {
 
     const { value, handleOnChange } = useInput("");
@@ -31,12 +31,14 @@ const MoviesList = ( {
                             src={movie.Poster}></img>
                     </div>
                     <div className="card-footer">
-                        {favoriteInfo === true
+                        {favorite !== undefined
                         ? <div className="page-movie-card-footer-buttons-wrapper">
                             <button
                                 type="button"
                                 className="btn btn-light page-movie-button"
-                                onClick={ () => setFavorite(movie)}
+                                onClick={ () => {
+                                    storeFavorite(movie)
+                                }}
                                 ><i className="fas fa-star">Añadir</i>
                             </button>
                             <button
