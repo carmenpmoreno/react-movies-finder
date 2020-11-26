@@ -3,7 +3,10 @@ import { TOAST_ACTIONS } from './constants';
 const INITIAL_STATE = {
     show: false,
     toastType: '',
-    message: ''
+    message: '',
+    containerClass: '',
+    buttonClass: '',
+    headerClass: ''
 }
 
 export default (state =  INITIAL_STATE, action) => {    
@@ -12,13 +15,19 @@ export default (state =  INITIAL_STATE, action) => {
             return {
                 show: true,
                 message: action.message,
-                toastType: action.toastType
+                toastType: action.toastType,
+                containerClass: action.containerClass,
+                buttonClass: action.buttonClass,
+                headerClass: action.headerClass
             }
         case TOAST_ACTIONS.HIDE_TOAST:
             return {
                 show: false,
                 message: '',
-                toastType: ''
+                toastType: '',
+                containerClass: '',
+                buttonClass: '',
+                headerClass: ''
             }
         default:
             return state;
