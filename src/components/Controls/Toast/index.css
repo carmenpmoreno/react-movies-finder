@@ -6,11 +6,11 @@
     padding: 15px;
     z-index: 1000;
     border-radius: 3px;
-    background-color: #966ea0;
     color: #fff;
 }
 
 .toast-container-success {
+    background-color: #966ea0;
     animation: initToast 2s 1, toastHide 2s 5s infinite;
 }
 
