@@ -20,7 +20,7 @@ const getClassName  = (toastType) => {
 
         case TOAST_TYPES.SUCCESS:
             className = {
-                containerClass: 'toast-container',
+                containerClass: 'toast-container toast-container-success',
                 buttonClass: 'success-toast-button mb-1 close',
                 headerClass: 'toast-p'
             }

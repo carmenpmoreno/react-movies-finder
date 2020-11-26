@@ -20,9 +20,9 @@ const FavoritesPage = () => {
 
     useEffect(() => {
         if( opinion !== undefined && opinion.length > 0 ) {
-            setopinionStoredMessage('¡Guardada con éxito!')
+          setopinionStoredMessage('¡Guardada con éxito!')
         }
-    }, [opinion, dispatch]);
+    }, [opinion]);
 
     useEffect(() => {
         if( opinionStoredMessage.length === 0 ) {
