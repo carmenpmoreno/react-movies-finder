@@ -2,7 +2,6 @@
 export const addFavoriteKey = ( onlymovies ) => {
 
     const favoritesFromLS = JSON.parse( localStorage.getItem( 'favorites' ) );
-    console.log(favoritesFromLS)
     let favoriteMovie = {},
         onlymoviesPlusFavoritesKey = {};
 
@@ -48,6 +47,7 @@ export const storeFavorite = ( movie ) => {
     favoritesFromLS = localStorage.getItem( 'favorites' );
 
     if( favoritesFromLS === null ) {
+        console.log(freshFavorites)
         localStorage.setItem( 'favorites', JSON.stringify(freshFavorites) )
     } else {
         oldFavorites = JSON.parse(favoritesFromLS);

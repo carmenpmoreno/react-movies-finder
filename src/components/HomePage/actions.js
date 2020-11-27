@@ -70,9 +70,11 @@ export const getFavoriteMovie = ( movie ) => ({
 
 
 export const filterSearchedMovies = ( movie, setNewFavorite ) => {
+    
+    setNewFavorite(false)
 
     return ( dispatch, getState) => {
-
+        setNewFavorite(false)
         storeFavorite( movie )
 
         const state = getState().HomeReducer,

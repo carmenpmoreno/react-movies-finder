@@ -39,7 +39,7 @@ const MoviesList = ( {
                             <button
                                 type="button"
                                 className="btn btn-light page-movie-button"
-                                onClick={() => onFavoriteButtonClick( movie, setNewFavorite )}
+                                onClick={() => onFavoriteButtonClick(movie, setNewFavorite)}
                                 ><i className="fas fa-star">Añadir</i>
                             </button>
                             <button
