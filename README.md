@@ -22,3 +22,4 @@ It includes a mock login system that stores the username in sessionStorage and r
 # Latest updates
 - Mock users.json and feedback message on login page if user does not exist
 - Use react hooks to learn: useState, custom hook, useSelector and useDispatch.
+- Add toast and dispatch toast actions on favorite button click on homepage and on opinion update on favorites page.
