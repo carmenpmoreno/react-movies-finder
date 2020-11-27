@@ -1,10 +1,7 @@
 # Introduction 
-Movie finder with a favorites page to store your favorite movies. It includes a user menu and an option to store your opinion about the movies from the favorites page. A responsive website and a React and Redux project.
+Project to learn React and Redux frameworks. Movie finder with a favorites page to store your favorite movies. It includes a user menu and an option to store your opinion about the movies from the favorites page. A responsive website.
 
-It includes a mock login system that stores the username in sessionStorage. To log in, enter the user "general user".
-
-As a database I use the REST API http://www.omdbapi.com.
-To store favorite movies I use the browser's localStorage.
+It includes a mock login system that stores the username in sessionStorage and recover it fron there when user refresh page. To log in, enter the user "general user". To store favorite movies I use the browser's localStorage. As a database API to find the movies, I use the REST API http://www.omdbapi.com.
 
 
 # Getting Started
@@ -24,3 +21,4 @@ To store favorite movies I use the browser's localStorage.
 
 # Latest updates
 - Mock users.json and feedback message on login page if user does not exist
+- Use react hooks to learn: useState, custom hook, useSelector and useDispatch.

@@ -57,7 +57,11 @@ export default (state =  INITIAL_STATE, action) => {
                     action.movie
                 ],
             }
-
+        case HOME_ACTIONS.FILTER_SEARCHED_MOVIES:
+            return {
+                ...state,
+                movies: action.filteredMovies
+            }
         default:
             return state
     }

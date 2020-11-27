@@ -1,0 +1,48 @@
+.toast-container {
+    position: fixed;
+    top: 20vh;
+    right: 25px;
+    font-size: 1rem;
+    padding: 15px;
+    z-index: 1000;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.toast-container-success {
+    background-color: #966ea0;
+    animation: initToast 2s 1, toastHide 2s 5s infinite;
+}
+
+.toast-p {
+    font-size: 1.2rem;
+    padding: 3px;
+}
+.toast-button-container {
+    text-align: right;
+}
+
+.delete-toast-button {
+    font-size: 1rem;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;    
+}
+
+.delete-toast-button:hover {
+    color: rgb(44, 18, 18);
+}
+
+@keyframes initToast {
+	0%   { opacity: 0; transform: scale(0.5) translate(0, 30vh) }
+    10%  { opacity: 0.2; transform: scale(1) translate(0, 10vh) }
+    100% { opacity: 1; transform: translate(0, 0px) }
+}
+
+@keyframes toastHide {
+	0%   { opacity: 0 }
+	100% { opacity: 0 }
+}
+

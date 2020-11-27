@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { setFavorite } from '../../helpers';
 import { useInput } from '../../customHooks';
 
-const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOptions } ) => {
+const MoviesList = ( {
+    movies,
+    setNewFavorite,
+    onFavoriteButtonClick,
+    homePage,
+
+    storeFavoriteOpinion, 
+    opinionOptions, 
+    setopinionStoredMessage,
+    opinionStoredMessage,
+ } ) => {
 
     const { value, handleOnChange } = useInput("");
 
@@ -24,12 +33,12 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                             src={movie.Poster}></img>
                     </div>
                     <div className="card-footer">
-                        {favoriteInfo === true
+                        {homePage === true && movie.favorite === false
                         ? <div className="page-movie-card-footer-buttons-wrapper">
                             <button
                                 type="button"
                                 className="btn btn-light page-movie-button"
-                                onClick={ () => setFavorite(movie)}
+                                onClick={() => onFavoriteButtonClick(movie, setNewFavorite)}
                                 ><i className="fas fa-star">Añadir</i>
                             </button>
                             <button
@@ -43,12 +52,30 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                         </div>
                         : ''
                         }
+                        {homePage === true && movie.favorite === true 
+                        ? <div className="page-movie-card-footer-buttons-wrapper">
+                            <p><i className="fas fa-star"></i></p>
+                            <button
+                            type="button"
+                            className="btn btn-light page-movie-button"
+                            >
+                                <Link to={`/detail/${movie.imdbID}`}>
+                                    Más información
+                                </Link>
+                            </button>
+                        </div>
+                        : ''}
                         {opinionOptions === true && movie.opinion === undefined
                         ? <div className="favorite-movie-card-footer">
                             <input 
                                 className="page-card-input"
                                 placeholder="Escribe aquí tu opinión" 
-                                onChange={handleOnChange}
+                                onChange={(e) => {
+                                    if(opinionStoredMessage!== undefined && opinionStoredMessage.length > 0) {
+                                        setopinionStoredMessage('')
+                                    }
+                                    return handleOnChange(e)
+                                }}
                                 maxLength="54"
                             />
                             <div className="page-movie-card-footer-buttons-wrapper">
@@ -87,13 +114,12 @@ const MoviesList = ( { movies, favoriteInfo, storeFavoriteOpinion, opinionOption
                             </div>
                         </div>
                         : ''
-                        }
+                        }                        
                         
                     </div>
                     
                 </li>)
             }
-
         </>
     );
 };

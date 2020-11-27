@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
-
 import MoviesList from '../Controls/MoviesList';
-import { closeFavoriteModal } from '../helpers';
+import { getShowToast, getHideToast } from '../Controls/Toast/actions';
+import { TOAST_TYPES } from '../Controls/Toast/constants';
 
 export  const detectSafariBrowser = () => {
   var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari']);
@@ -13,15 +13,35 @@ export  const detectSafariBrowser = () => {
 
 const HomePage = (props) => {
 
-  const {
-    onInputChange,
-    onSearchButtonClick,
-    inputToSearch,
-    movies,
-    error,
-    errorMessage,
-    remoteError,
-   } = props
+    const {
+      onInputChange,
+      onSearchButtonClick,
+      inputToSearch,
+      movies,
+      error,
+      errorMessage,
+      remoteError,
+      cleanToast,
+      showToast,
+      onFavoriteButtonClick
+    } = props
+
+
+    const [ newfavorite, setNewFavorite ] = useState(false),
+      [ favoriteStoredMessage, setNewFavoriteStoredMessage] = useState('');
+
+    useEffect(() => {
+      if( newfavorite === true ) {
+        setNewFavoriteStoredMessage('¡Añadida a Favoritos!')
+      }
+    }, [ newfavorite ])
+
+
+    useEffect(() => {
+      if( favoriteStoredMessage === '¡Añadida a Favoritos!' ) {
+        showToast(TOAST_TYPES.SUCCESS, favoriteStoredMessage)
+      }
+    }, [ movies, favoriteStoredMessage, showToast, cleanToast ])
 
     return (
       <section className="page-container">
@@ -64,23 +84,13 @@ const HomePage = (props) => {
         </article>
 
         <article>
-          <div id="favorite-message" className="favorite-modal-container favorite-message-hidden">
-            <div className="favorite-modal">
-              <p>El elemento seleccionado ha sido añadido a la página de favoritos</p>
-              <button
-              type="button"
-              className="btn btn-light"
-              onClick={() => closeFavoriteModal()}
-              >
-                Cerrar
-              </button>
-            </div>
-          </div>
           <ul className="page-movies-list-container container-fluid">
             {movies && error === false && remoteError === false
             ? <MoviesList
+                homePage={true}
                 movies={movies}
-                favoriteInfo={true}  
+                setNewFavorite={setNewFavorite}
+                onFavoriteButtonClick={onFavoriteButtonClick}
               />
             : '' }
 
@@ -128,6 +138,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onInputChange: (value) => dispatch(actions.getInputToSearch(value)),
   onSearchButtonClick: (e) => dispatch(actions.searchHandler(e)),
+  cleanToast: () => dispatch(getHideToast()),
+  showToast: (toastType, toastMessage) => dispatch(getShowToast(toastType, toastMessage)),
+  onFavoriteButtonClick: ( movie, setNewFavorite ) => dispatch( actions.filterSearchedMovies(movie, setNewFavorite) )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
