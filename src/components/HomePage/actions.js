@@ -1,4 +1,6 @@
 import { HOME_ACTIONS, API_KEY } from './constants';
+import { TOAST_ACTIONS } from '../Controls/Toast/constants';
+
 import { addFavoriteKey, storeFavorite } from './helpers';
 
 export const getInputToSearch = (inputValue) => ({
@@ -71,10 +73,8 @@ export const getFavoriteMovie = ( movie ) => ({
 
 export const filterSearchedMovies = ( movie, setNewFavorite ) => {
     
-    setNewFavorite(false)
-
     return ( dispatch, getState) => {
-        setNewFavorite(false)
+
         storeFavorite( movie )
 
         const state = getState().HomeReducer,
@@ -83,6 +83,10 @@ export const filterSearchedMovies = ( movie, setNewFavorite ) => {
             filteredOnlyMovies = addFavoriteKey(currentMovies);
         
         filteredMovies.Search = filteredOnlyMovies
+
+        dispatch({
+            type: TOAST_ACTIONS.HIDE_TOAST
+        })
 
         dispatch({    
             type: HOME_ACTIONS.FILTER_SEARCHED_MOVIES,

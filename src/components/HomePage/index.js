@@ -26,9 +26,6 @@ const HomePage = (props) => {
       onFavoriteButtonClick
     } = props
 
-    useEffect(() => {
-      cleanToast()
-    }, [cleanToast]);
 
     const [ newfavorite, setNewFavorite ] = useState(false),
       [ favoriteStoredMessage, setNewFavoriteStoredMessage] = useState('');
@@ -36,8 +33,6 @@ const HomePage = (props) => {
     useEffect(() => {
       if( newfavorite === true ) {
         setNewFavoriteStoredMessage('¡Añadida a Favoritos!')
-      } else {
-        setNewFavoriteStoredMessage('')
       }
     }, [ newfavorite ])
 
@@ -45,10 +40,8 @@ const HomePage = (props) => {
     useEffect(() => {
       if( favoriteStoredMessage === '¡Añadida a Favoritos!' ) {
         showToast(TOAST_TYPES.SUCCESS, favoriteStoredMessage)
-      } else {
-        cleanToast()
       }
-    }, [ favoriteStoredMessage, showToast, cleanToast ])
+    }, [ movies, favoriteStoredMessage, showToast, cleanToast ])
 
     return (
       <section className="page-container">
