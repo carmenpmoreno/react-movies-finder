@@ -23,7 +23,7 @@ const UserMenu = ( {
             {userOptions.menuShow
                 ? <div 
                     id="user-menu"
-                    onMouseLeave={() => handleUserMenuButton(userOptions, setUserUpdate, currentFavorites)}
+                    // onMouseLeave={() => handleUserMenuButton(userOptions, setUserUpdate, currentFavorites)}
                     >
                         <ul 
                             className="user-menu-user-name-container"
