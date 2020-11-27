@@ -1,5 +1,5 @@
 import { HOME_ACTIONS, API_KEY } from './constants';
-import { addFavoriteKey } from './helpers';
+import { addFavoriteKey, storeFavorite } from './helpers';
 
 export const getInputToSearch = (inputValue) => ({
     type: HOME_ACTIONS.GET_INPUT_TO_SEARCH,
@@ -67,3 +67,28 @@ export const getFavoriteMovie = ( movie ) => ({
     type: HOME_ACTIONS.ADD_TO_FAVORITES_LIST,
     movie: movie,
 })
+
+
+export const filterSearchedMovies = ( movie, setNewFavorite ) => {
+
+    return ( dispatch, getState) => {
+
+        storeFavorite( movie )
+
+        const state = getState().HomeReducer,
+            currentMovies = state.movies.Search;
+        let filteredMovies = currentMovies,
+            filteredOnlyMovies = addFavoriteKey(currentMovies);
+        
+        filteredMovies.Search = filteredOnlyMovies
+
+        dispatch({    
+            type: HOME_ACTIONS.FILTER_SEARCHED_MOVIES,
+            filteredMovies: filteredMovies,
+        })
+
+        setNewFavorite(true)
+
+    }
+    
+}

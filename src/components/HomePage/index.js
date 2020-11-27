@@ -22,7 +22,8 @@ const HomePage = (props) => {
       errorMessage,
       remoteError,
       cleanToast,
-      showToast
+      showToast,
+      onFavoriteButtonClick
     } = props
 
     useEffect(() => {
@@ -31,24 +32,6 @@ const HomePage = (props) => {
 
     const [ newfavorite, setNewFavorite ] = useState(false),
       [ favoriteStoredMessage, setNewFavoriteStoredMessage] = useState('');
-
-    const storeFavorite = ( movie ) => {
-        let freshFavorites = [ movie ],
-            oldFavorites = [],
-            favoritesFromLS = [];    
-        
-        favoritesFromLS = localStorage.getItem( 'favorites' );
-    
-        if( favoritesFromLS === null ) {
-            localStorage.setItem( 'favorites', JSON.stringify(freshFavorites) )
-        } else {
-            oldFavorites = JSON.parse(favoritesFromLS);
-            let oldFavoritesFiltered = oldFavorites.filter( oldFavorite => oldFavorite.imdbID !== movie.imdbID )
-            oldFavoritesFiltered.push(movie);
-            localStorage.setItem( 'favorites', JSON.stringify(oldFavoritesFiltered) );
-        }
-        setNewFavorite(true)
-    }
 
     useEffect(() => {
       if( newfavorite === true ) {
@@ -112,11 +95,11 @@ const HomePage = (props) => {
             {movies && error === false && remoteError === false
             ? <MoviesList
                 movies={movies}
-                storeFavorite={storeFavorite}
                 newfavorite={newfavorite}
                 favoriteStoredMessage={favoriteStoredMessage}
                 setNewFavoriteStoredMessage={setNewFavoriteStoredMessage}
                 setNewFavorite={setNewFavorite}
+                onFavoriteButtonClick={onFavoriteButtonClick}
               />
             : '' }
 
@@ -165,7 +148,8 @@ const mapDispatchToProps = dispatch => ({
   onInputChange: (value) => dispatch(actions.getInputToSearch(value)),
   onSearchButtonClick: (e) => dispatch(actions.searchHandler(e)),
   cleanToast: () => dispatch(getHideToast()),
-  showToast: (toastType, toastMessage) => dispatch(getShowToast(toastType, toastMessage))
+  showToast: (toastType, toastMessage) => dispatch(getShowToast(toastType, toastMessage)),
+  onFavoriteButtonClick: ( movie, setNewFavorite ) => dispatch( actions.filterSearchedMovies(movie, setNewFavorite) )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

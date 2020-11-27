@@ -5,7 +5,6 @@ import { useInput } from '../../customHooks';
 
 const MoviesList = ( {
     movies,
-    storeFavorite,
     newfavorite,
     favoriteStoredMessage,
     setNewFavoriteStoredMessage,
@@ -14,6 +13,7 @@ const MoviesList = ( {
     opinionOptions, 
     setopinionStoredMessage,
     opinionStoredMessage,
+    onFavoriteButtonClick
  } ) => {
 
     const { value, handleOnChange } = useInput("");
@@ -39,13 +39,7 @@ const MoviesList = ( {
                             <button
                                 type="button"
                                 className="btn btn-light page-movie-button"
-                                onClick={ () => {
-                                    if(newfavorite !== undefined && newfavorite === true ) {
-                                        setNewFavorite(false)
-                                        // setNewFavoriteStoredMessage('')
-                                    }
-                                    storeFavorite(movie)
-                                }}
+                                onClick={() => onFavoriteButtonClick( movie, setNewFavorite )}
                                 ><i className="fas fa-star">Añadir</i>
                             </button>
                             <button
