@@ -36,6 +36,11 @@ export default (state =  INITIAL_STATE, action) => {
                 isLoading: action.isLoading,
                 movies: action.movies
             }
+        case HOME_ACTIONS.FILTER_MOVIES_FAVORITES:
+            return {
+                ...state,
+                movies: action.movies
+            }
         case HOME_ACTIONS.SEARCH_FAILED:
             return {
                 ...state,

@@ -6,10 +6,10 @@ import { useInput } from '../../customHooks';
 const MoviesList = ( {
     movies,
     storeFavorite,
-    favorite,
+    newfavorite,
     favoriteStoredMessage,
-    setFavoriteStoredMessage,
-    setFavorite,
+    setNewFavoriteStoredMessage,
+    setNewFavorite,
     storeFavoriteOpinion, 
     opinionOptions, 
     setopinionStoredMessage,
@@ -34,15 +34,15 @@ const MoviesList = ( {
                             src={movie.Poster}></img>
                     </div>
                     <div className="card-footer">
-                        {favorite !== undefined
+                        {newfavorite !== undefined && movie.favorite === false
                         ? <div className="page-movie-card-footer-buttons-wrapper">
                             <button
                                 type="button"
                                 className="btn btn-light page-movie-button"
                                 onClick={ () => {
-                                    if(favorite !== undefined && favorite === true ) {
-                                        setFavorite(false)
-                                        // setFavoriteStoredMessage('')
+                                    if(newfavorite !== undefined && newfavorite === true ) {
+                                        setNewFavorite(false)
+                                        // setNewFavoriteStoredMessage('')
                                     }
                                     storeFavorite(movie)
                                 }}
@@ -57,7 +57,17 @@ const MoviesList = ( {
                                 </Link>
                             </button>
                         </div>
-                        : ''
+                        : <div className="page-movie-card-footer-buttons-wrapper">
+                            <p><i className="fas fa-star"></i></p>
+                            <button
+                            type="button"
+                            className="btn btn-light page-movie-button"
+                            >
+                                <Link to={`/detail/${movie.imdbID}`}>
+                                    Más información
+                                </Link>
+                            </button>
+                        </div>
                         }
                         {opinionOptions === true && movie.opinion === undefined
                         ? <div className="favorite-movie-card-footer">

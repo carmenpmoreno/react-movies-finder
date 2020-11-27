@@ -1,4 +1,5 @@
-import { HOME_ACTIONS, API_KEY } from './constants'
+import { HOME_ACTIONS, API_KEY } from './constants';
+import { addFavoriteKey } from './helpers';
 
 export const getInputToSearch = (inputValue) => ({
     type: HOME_ACTIONS.GET_INPUT_TO_SEARCH,
@@ -12,7 +13,10 @@ export const searchHandler = (e) => {
     return (dispatch, getState) => {      
         
         const state = getState().HomeReducer,
-        inputToSearch = state.inputToSearch;
+            inputToSearch = state.inputToSearch;
+
+        let moviesResultsPlusFavoritesKey = {},
+            onlymoviesPlusFavoritesKey = [];
 
             if(inputToSearch.length > 3) {
 
@@ -26,12 +30,16 @@ export const searchHandler = (e) => {
                     .then(data => {
 
                         if(data.Response === "True") {
+                            moviesResultsPlusFavoritesKey = data;
+                            onlymoviesPlusFavoritesKey = addFavoriteKey(moviesResultsPlusFavoritesKey.Search);
+                            moviesResultsPlusFavoritesKey.Search = onlymoviesPlusFavoritesKey;
+
                             dispatch({
                                 type: HOME_ACTIONS.SEARCH_SUCESS,
                                 isLoading: false,
-                                movies: data
+                                movies: moviesResultsPlusFavoritesKey
                             })
-                            sessionStorage.setItem('movies', JSON.stringify(data.Search))
+                            sessionStorage.setItem('movies', JSON.stringify(onlymoviesPlusFavoritesKey))
                         } else {
                             dispatch({
                                 type: HOME_ACTIONS.SEARCH_FAILED,

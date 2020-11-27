@@ -29,8 +29,8 @@ const HomePage = (props) => {
       cleanToast()
     }, [cleanToast]);
 
-    const [ favorite, setFavorite ] = useState(false),
-      [ favoriteStoredMessage, setFavoriteStoredMessage] = useState('');
+    const [ newfavorite, setNewFavorite ] = useState(false),
+      [ favoriteStoredMessage, setNewFavoriteStoredMessage] = useState('');
 
     const storeFavorite = ( movie ) => {
         let freshFavorites = [ movie ],
@@ -47,16 +47,16 @@ const HomePage = (props) => {
             oldFavoritesFiltered.push(movie);
             localStorage.setItem( 'favorites', JSON.stringify(oldFavoritesFiltered) );
         }
-        setFavorite(true)
+        setNewFavorite(true)
     }
 
     useEffect(() => {
-      if( favorite === true ) {
-        setFavoriteStoredMessage('¡Añadida a Favoritos!')
+      if( newfavorite === true ) {
+        setNewFavoriteStoredMessage('¡Añadida a Favoritos!')
       } else {
-        setFavoriteStoredMessage('')
+        setNewFavoriteStoredMessage('')
       }
-    }, [ favorite ])
+    }, [ newfavorite ])
 
 
     useEffect(() => {
@@ -113,10 +113,10 @@ const HomePage = (props) => {
             ? <MoviesList
                 movies={movies}
                 storeFavorite={storeFavorite}
-                favorite={favorite}
+                newfavorite={newfavorite}
                 favoriteStoredMessage={favoriteStoredMessage}
-                setFavoriteStoredMessage={setFavoriteStoredMessage}
-                setFavorite={setFavorite}
+                setNewFavoriteStoredMessage={setNewFavoriteStoredMessage}
+                setNewFavorite={setNewFavorite}
               />
             : '' }
 
