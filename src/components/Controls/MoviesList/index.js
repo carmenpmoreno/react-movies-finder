@@ -5,15 +5,14 @@ import { useInput } from '../../customHooks';
 
 const MoviesList = ( {
     movies,
-    newfavorite,
-    favoriteStoredMessage,
-    setNewFavoriteStoredMessage,
     setNewFavorite,
+    onFavoriteButtonClick,
+    homePage,
+
     storeFavoriteOpinion, 
     opinionOptions, 
     setopinionStoredMessage,
     opinionStoredMessage,
-    onFavoriteButtonClick
  } ) => {
 
     const { value, handleOnChange } = useInput("");
@@ -34,7 +33,7 @@ const MoviesList = ( {
                             src={movie.Poster}></img>
                     </div>
                     <div className="card-footer">
-                        {newfavorite !== undefined && movie.favorite === false
+                        {homePage === true && movie.favorite === false
                         ? <div className="page-movie-card-footer-buttons-wrapper">
                             <button
                                 type="button"
@@ -51,7 +50,10 @@ const MoviesList = ( {
                                 </Link>
                             </button>
                         </div>
-                        : <div className="page-movie-card-footer-buttons-wrapper">
+                        : ''
+                        }
+                        {homePage === true && movie.favorite === true 
+                        ? <div className="page-movie-card-footer-buttons-wrapper">
                             <p><i className="fas fa-star"></i></p>
                             <button
                             type="button"
@@ -62,7 +64,7 @@ const MoviesList = ( {
                                 </Link>
                             </button>
                         </div>
-                        }
+                        : ''}
                         {opinionOptions === true && movie.opinion === undefined
                         ? <div className="favorite-movie-card-footer">
                             <input 

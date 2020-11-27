@@ -94,10 +94,8 @@ const HomePage = (props) => {
           <ul className="page-movies-list-container container-fluid">
             {movies && error === false && remoteError === false
             ? <MoviesList
+                homePage={true}
                 movies={movies}
-                newfavorite={newfavorite}
-                favoriteStoredMessage={favoriteStoredMessage}
-                setNewFavoriteStoredMessage={setNewFavoriteStoredMessage}
                 setNewFavorite={setNewFavorite}
                 onFavoriteButtonClick={onFavoriteButtonClick}
               />
