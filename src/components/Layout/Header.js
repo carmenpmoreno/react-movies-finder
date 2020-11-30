@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {getFavorites} from '../transversal';
 import UserMenu from '../Controls/UserMenu'
 
-const Header = () => {
-    const currentFavorites = getFavorites,
-        [ userOptions, setUserUpdate ] = useState({
-                                        favorites: currentFavorites(),
-                                        menuShow: false,
-                                    }),
-        userName = useSelector(state => state.LoginReducer.user);
+const Header = ({setUserUpdate, currentFavorites, userOptions}) => {
+
+    const userName = useSelector(state => state.LoginReducer.user);
 
     return (
         <header className="header-container">

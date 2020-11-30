@@ -8,9 +8,14 @@ import DetailPage from '../DetailPage'
 import FavoritesPage from '../FavoritesPage'
 import LogoutPage from '../LogoutPage';
 
-const Main = ( {movies} ) => {
+import { handleUserMenuOutsideClose } from '../Controls/UserMenu/helpers';
+
+const Main = ({setUserUpdate}) => {
+
     return (
-        <main>
+        <main
+            onClick={() => handleUserMenuOutsideClose(setUserUpdate)}
+        >
             <Switch>
                 <Route 
                     exact path='/logout'
@@ -18,7 +23,8 @@ const Main = ( {movies} ) => {
                 />
                 <Route 
                     path='/home'
-                    component={HomePage} 
+                    component={HomePage}
+                    setUserUpdate={setUserUpdate}
                 />
                 <Route
                     path='/detail/:detailId'

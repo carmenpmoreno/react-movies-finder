@@ -13,3 +13,10 @@ export const handleUserMenuButton = (userOptions, setUserUpdate, currentFavorite
     }
 
 }
+
+export const handleUserMenuOutsideClose = (setUserUpdate) => {
+
+    setUserUpdate({
+            menuShow: false
+        })
+}
