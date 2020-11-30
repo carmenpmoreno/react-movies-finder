@@ -21,10 +21,7 @@ const UserMenu = ( {
                 ><i className="fas fa-user-cog"></i>Menú usuario
             </button>
             {userOptions.menuShow
-                ? <div 
-                    id="user-menu"
-                    // onMouseLeave={() => handleUserMenuButton(userOptions, setUserUpdate, currentFavorites)}
-                    >
+                ? <div id="user-menu">
                         <ul 
                             className="user-menu-user-name-container"
                             >

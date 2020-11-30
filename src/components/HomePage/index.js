@@ -23,7 +23,7 @@ const HomePage = (props) => {
       remoteError,
       cleanToast,
       showToast,
-      onFavoriteButtonClick
+      onFavoriteButtonClick,
     } = props
 
 
